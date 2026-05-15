@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Profesional - Aisha Putri</title>
+    <title>Aisha Putri | Digital Portfolio</title>
     
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
-    <!-- Google Fonts: Plus Jakarta Sans (Modern) & Merriweather (Formal/Elegan) -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Outfit (Modern & Geometric) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Palette Warna: Royal Blue & Gold atas Cream */
-            --primary: #1e293b;       /* Slate 800 - Teks utama (Sangat gelap tapi bukan hitam pekat) */
-            --secondary: #475569;     /* Slate 600 - Teks deskripsi */
-            --accent: #d97706;        /* Amber 600 (Gold/Orange) - Aksen elegan */
-            --accent-hover: #b45309;  /* Amber 700 - Hover state */
-            --bg-body: #fdfbf7;       /* Cream Kuning Sangat Tipis (Warm White) */
-            --bg-card: #ffffff;       /* Putih bersih */
-            --border: #e2e8f0;        /* Border halus */
-            --shadow: 0 20px 40px -10px rgba(30, 41, 59, 0.08); /* Bayangan lembut */
+            /* Palette Premium: Deep Navy & Gold */
+            --primary: #0f172a;       /* Slate 900 - Teks utama */
+            --text-muted: #64748b;    /* Slate 500 - Teks sekunder */
+            --accent: #d4a017;        /* Metallic Gold - Aksen */
+            --bg-glass: rgba(255, 255, 255, 0.85); /* Putih transparan */
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Background halus */
+            --shadow-soft: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+            --shadow-float: 0 10px 25px rgba(0,0,0,0.1);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * {
@@ -31,498 +35,390 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif; /* Font modern & bersih */
-            background-color: var(--bg-body);
-            color: var(--primary);
-            line-height: 1.7;
-            padding: 40px 20px;
-            font-size: 14px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            background: var(--bg-card);
-            box-shadow: var(--shadow);
-            border-radius: 16px; /* Lebih bulat, tidak kaku */
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            position: relative;
-        }
-
-        /* --- KOLOM KIRI (SIDEBAR) --- */
-        .sidebar {
-            background-color: #f8fafc; /* Sedikit lebih gelap dari putih */
-            padding: 50px 30px;
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .profile-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .avatar-wrapper {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 25px;
-        }
-
-        .avatar-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary), #334155);
-            color: white;
-            border-radius: 50%;
+            font-family: 'Outfit', sans-serif;
+            background: #0f172a; /* Background gelap di luar agar card menonjol */
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
-            font-weight: 700;
-            box-shadow: 0 10px 20px rgba(30, 41, 59, 0.2);
-            border: 3px solid white;
+            padding: 20px;
+            color: var(--primary);
         }
 
-        .sidebar h1 {
-            font-family: 'Merriweather', serif; /* Font serif untuk nama agar elegan */
+        /* Container Utama (Card) */
+        .card-container {
+            width: 100%;
+            max-width: 420px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dekorasi Background Halus */
+        .card-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 160, 23, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Header Profile */
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar-wrapper {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .status-badge {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 18px;
+            height: 18px;
+            background: #10b981; /* Hijau online */
+            border: 3px solid white;
+            border-radius: 50%;
+        }
+
+        .name {
             font-size: 1.6rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 8px;
-            line-height: 1.2;
-        }
-
-        .sidebar .role {
-            font-size: 0.95rem;
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 20px;
-            display: inline-block;
-            background: rgba(217, 119, 6, 0.1);
-            padding: 6px 16px;
-            border-radius: 20px;
-        }
-
-        .contact-list {
-            list-style: none;
-            margin-bottom: 40px;
-        }
-
-        .contact-list li {
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-            color: var(--secondary);
-            transition: transform 0.2s ease;
-        }
-
-        .contact-list li:hover {
-            transform: translateX(5px);
-            color: var(--primary);
-        }
-
-        .contact-list i {
-            font-size: 1.3rem;
-            color: var(--accent);
-            margin-right: 15px;
-            min-width: 24px;
-        }
-
-        .contact-list a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .contact-list a:hover {
-            color: var(--accent);
-            text-decoration: underline;
-        }
-
-        .section-title-sm {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 8px;
-            display: inline-block;
-        }
-
-        .skills-list {
-            list-style: none;
-        }
-
-        .skills-list li {
-            background: white;
-            padding: 10px 14px;
-            margin-bottom: 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            display: flex;
-            align-items: center;
-            border-left: 3px solid var(--accent);
-            transition: all 0.2s;
-        }
-
-        .skills-list li:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
-        }
-
-        .skills-list i {
-            color: var(--primary);
-            margin-right: 12px;
-            font-size: 1.1rem;
-        }
-
-        /* --- KOLOM KANAN (MAIN CONTENT) --- */
-        .main-content {
-            padding: 50px 40px;
-        }
-
-        .intro-text {
-            margin-bottom: 40px;
-            font-size: 1.05rem;
-            color: var(--secondary);
-            font-family: 'Merriweather', serif; /* Sedikit serif untuk paragraf agar enak dibaca */
-            font-style: italic;
-            line-height: 1.8;
-            position: relative;
-            padding-left: 20px;
-            border-left: 3px solid var(--accent);
-        }
-
-        .main-section {
-            margin-bottom: 45px;
-        }
-
-        .section-title-lg {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            margin-bottom: 5px;
             letter-spacing: -0.5px;
         }
 
-        .section-title-lg i {
+        .role {
+            font-size: 0.95rem;
             color: var(--accent);
-            font-size: 1.5rem;
-            background: rgba(217, 119, 6, 0.1);
-            padding: 8px;
-            border-radius: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            background: rgba(212, 160, 23, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-block;
         }
 
-        /* Timeline Style yang lebih halus */
-        .experience-item {
+        /* Links Section */
+        .links-section {
             margin-bottom: 35px;
             position: relative;
-            padding-left: 25px;
+            z-index: 1;
         }
 
-        .experience-item::before {
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            display: block;
+            text-align: center;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn::after {
             content: '';
             position: absolute;
+            top: 0;
             left: 0;
-            top: 5px;
-            bottom: -25px;
-            width: 2px;
-            background: #e2e8f0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
         }
 
-        .experience-item:last-child::before {
-            display: none;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .exp-title {
-            font-size: 1.15rem;
-            font-weight: 700;
+        .link-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-color: var(--accent);
             color: var(--primary);
         }
 
-        .exp-company {
-            font-weight: 600;
-            color: var(--secondary);
-            font-size: 0.95rem;
+        .link-btn:hover::after {
+            transform: translateX(100%);
         }
 
-        .exp-date {
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-weight: 700;
-            background: rgba(217, 119, 6, 0.1);
-            padding: 6px 12px;
-            border-radius: 6px;
-            white-space: nowrap;
-        }
-
-        .exp-desc {
-            color: var(--secondary);
-            font-size: 0.95rem;
-            margin-top: 12px;
-            text-align: justify; /* Agar rata kiri kanan rapi */
-        }
-
-        .exp-desc ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .exp-desc li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 20px;
-            line-height: 1.6;
-        }
-
-        .exp-desc li::before {
-            content: '›';
-            color: var(--accent);
-            position: absolute;
-            left: 0;
+        .link-icon {
             font-size: 1.4rem;
-            line-height: 1.2;
-            font-weight: bold;
-            top: -2px;
+            color: var(--accent);
+            margin-right: 15px;
+            min-width: 24px;
+            text-align: center;
         }
 
-        /* Responsive Mobile */
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-                border-radius: 0;
-                box-shadow: none;
+        .link-text {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 1 / 1; /* Kotak sempurna */
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .portfolio-title {
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .portfolio-cat {
+            color: var(--accent);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Hover Effects Portfolio */
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .social-link i {
+            font-size: 1.2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            .sidebar {
-                border-right: none;
-                border-bottom: 1px solid var(--border);
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .card-container {
                 padding: 30px 20px;
             }
-            .main-content {
-                padding: 30px 20px;
-            }
-            .avatar-placeholder {
-                width: 90px;
-                height: 90px;
-                font-size: 28px;
-            }
-            .sidebar h1 {
+            .name {
                 font-size: 1.4rem;
             }
-        }
-
-        /* Print Optimized */
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-                color: black;
-            }
-            .container {
-                box-shadow: none;
-                max-width: 100%;
-                width: 100%;
-                border-radius: 0;
-            }
-            .sidebar {
-                background: #f8fafc;
-                border-right: 1px solid #ddd;
-            }
-            a {
-                text-decoration: none;
-                color: black;
-            }
-            .exp-date {
-                background: none;
-                border: 1px solid #ddd;
-                color: black;
-            }
-            .skills-list li {
-                border-left: 2px solid black;
-                box-shadow: none;
+            .portfolio-grid {
+                grid-template-columns: 1fr; /* Stack di HP */
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Sidebar Kiri -->
-        <aside class="sidebar">
-            <div class="profile-header">
-                <div class="avatar-wrapper">
-                    <div class="avatar-placeholder">AP</div>
-                </div>
-                <h1>Aisha Putri</h1>
-                <p class="role">Senior Product Designer</p>
+    <div class="card-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="avatar-wrapper">
+                <!-- Ganti src dengan link foto kamu -->
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Aisha Putri" class="avatar">
+                <div class="status-badge"></div>
             </div>
+            <h1 class="name">Aisha Putri</h1>
+            <div class="role">Product Designer</div>
+        </header>
 
-            <ul class="contact-list">
-                <li><i class="ph ph-envelope-simple"></i> <a href="mailto:aisha.putri@email.com">aisha.putri@email.com</a></li>
-                <li><i class="ph ph-whatsapp-logo"></i> <a href="tel:+628123456789">+62 812 3456 7890</a></li>
-                <li><i class="ph ph-map-pin"></i> <span>Jakarta Selatan, ID</span></li>
-                <li><i class="ph ph-linkedin-logo"></i> <a href="#">linkedin.com/in/aishaputri</a></li>
-                <li><i class="ph ph-globe"></i> <a href="#">aishaputri.design</a></li>
-            </ul>
+        <!-- Link Links -->
+        <section class="links-section">
+            <span class="section-label">Connect</span>
+            
+            <a href="https://linkedin.com/in/aishaputri" class="link-btn" target="_blank">
+                <i class="ph ph-linkedin-logo link-icon"></i>
+                <span class="link-text">LinkedIn Profile</span>
+            </a>
 
-            <div class="sidebar-section">
-                <h3 class="section-title-sm">Core Skills</h3>
-                <ul class="skills-list">
-                    <li><i class="ph ph-paint-brush-broad"></i> UI/UX Strategy</li>
-                    <li><i class="ph ph-device-mobile"></i> Figma & Prototyping</li>
-                    <li><i class="ph ph-code"></i> HTML/CSS/JS Basics</li>
-                    <li><i class="ph ph-users"></i> User Research</li>
-                    <li><i class="ph ph-chart-line-up"></i> Data Analytics</li>
-                    <li><i class="ph ph-translate"></i> English (IELTS 8.0)</li>
-                </ul>
+            <a href="mailto:aisha.putri@email.com" class="link-btn" target="_blank">
+                <i class="ph ph-envelope-simple link-icon"></i>
+                <span class="link-text">Email Me</span>
+            </a>
+
+            <a href="https://wa.me/628123456789" class="link-btn" target="_blank">
+                <i class="ph ph-whatsapp-logo link-icon"></i>
+                <span class="link-text">WhatsApp</span>
+            </a>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio-section">
+            <span class="section-label">Featured Work</span>
+            
+            <div class="portfolio-grid">
+                <!-- Porto 1 -->
+                <a href="#" class="portfolio-item" target="_blank">
+                    <!-- Ganti src dengan gambar porto 1 -->
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Project 1">
+                    <div class="portfolio-overlay">
+                        <div>
+                            <div class="portfolio-title">Fintech App Redesign</div>
+                            <div class="portfolio-cat">UI/UX Case Study</div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Porto 2 -->
+                <a href="#" class="portfolio-item" target="_blank">
+                    <!-- Ganti src dengan gambar porto 2 -->
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Project 2">
+                    <div class="portfolio-overlay">
+                        <div>
+                            <div class="portfolio-title">E-Commerce Dashboard</div>
+                            <div class="portfolio-cat">Web Design</div>
+                        </div>
+                    </div>
+                </a>
             </div>
+        </section>
 
-            <div class="sidebar-section" style="margin-top: 35px;">
-                <h3 class="section-title-sm">Sertifikasi</h3>
-                <ul class="skills-list">
-                    <li><i class="ph ph-certificate"></i> Google UX Design Pro</li>
-                    <li><i class="ph ph-award"></i> Product Management 101</li>
-                    <li><i class="ph ph-medal"></i> Agile Scrum Master</li>
-                </ul>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-text">© 2026 Aisha Putri. All rights reserved.</div>
+            <div class="social-icons">
+                <a href="#" class="social-link"><i class="ph ph-instagram-logo"></i></a>
+                <a href="#" class="social-link"><i class="ph ph-dribbble-logo"></i></a>
+                <a href="#" class="social-link"><i class="ph ph-behance-logo"></i></a>
             </div>
-        </aside>
-
-        <!-- Konten Utama Kanan -->
-        <main class="main-content">
-            <!-- Profil Singkat -->
-            <section>
-                <h2 class="section-title-lg"><i class="ph ph-user-circle"></i> Tentang Saya</h2>
-                <p class="intro-text">
-                    Product Designer yang berdedikasi dengan pengalaman 5+ tahun dalam menciptakan solusi digital yang berpusat pada pengguna. Spesialis dalam menjembatani kesenjangan antara kebutuhan bisnis dan ekspektasi pengguna melalui desain yang elegan dan fungsional. Terbukti meningkatkan retensi pengguna hingga 40% melalui strategi desain berbasis data yang terukur.
-                </p>
-            </section>
-
-            <!-- Pengalaman Kerja -->
-            <section class="main-section">
-                <h2 class="section-title-lg"><i class="ph ph-briefcase"></i> Pengalaman Profesional</h2>
-
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-title">Senior Product Designer</div>
-                            <div class="exp-company">TechFlow Solutions | Jakarta</div>
-                        </div>
-                                                    <div class="exp-date">2023 - Sekarang</div>
-                        </div>
-                    </div>
-                    <div class="exp-desc">
-                        <ul>
-                            <li>Memimpin strategi desain ulang aplikasi mobile yang berhasil meningkatkan skor CSAT dari 3.8 menjadi 4.7 dalam 6 bulan.</li>
-                            <li>Berkolaborasi erat dengan tim Engineering dan Product Manager untuk meluncurkan fitur AI yang meningkatkan engagement pengguna sebesar 25%.</li>
-                            <li>Membangun dan memelihara *Design System* skala besar yang digunakan oleh 5 produk berbeda, mempercepat proses development hingga 30%.</li>
-                            <li>Memimpin sesi *usability testing* mingguan dan *design critique* untuk memastikan kualitas produk yang konsisten.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-title">UI/UX Designer</div>
-                            <div class="exp-company">Creative Studio ID | Bandung</div>
-                        </div>
-                        <div class="exp-date">2021 - 2023</div>
-                    </div>
-                    <div class="exp-desc">
-                        <ul>
-                            <li>Mendesain antarmuka web dan mobile untuk 15+ klien dari berbagai sektor (Fintech, E-commerce, Edtech) dengan standar internasional.</li>
-                            <li>Berkolaborasi dengan tim copywriter untuk menyusun *microcopy* yang strategis, meningkatkan konversi landing page sebesar 18%.</li>
-                            <li>Melakukan audit UX komprehensif pada produk klien yang ada dan merekomendasikan perbaikan strategis berbasis data.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-title">Junior Designer</div>
-                            <div class="exp-company">Startup Maju | Jakarta</div>
-                        </div>
-                        <div class="exp-date">2019 - 2021</div>
-                    </div>
-                    <div class="exp-desc">
-                        <ul>
-                            <li>Mendukung tim senior dalam pembuatan wireframe, mockup high-fidelity, dan aset interaktif.</li>
-                            <li>Mengelola perpustakaan aset desain dan memastikan konsistensi identitas visual di semua saluran komunikasi.</li>
-                            <li>Melakukan riset kompetitor mendalam untuk mengidentifikasi peluang fitur baru dan tren pasar.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Pendidikan -->
-            <section class="main-section">
-                <h2 class="section-title-lg"><i class="ph ph-graduation-cap"></i> Pendidikan</h2>
-                
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-title">Sarjana Desain Komunikasi Visual</div>
-                            <div class="exp-company">Institut Teknologi Bandung (ITB)</div>
-                        </div>
-                        <div class="exp-date">2015 - 2019</div>
-                    </div>
-                    <div class="exp-desc">
-                        <p>Lulusan dengan predikat <strong>Cum Laude</strong>. Aktif memimpin organisasi mahasiswa desain dan pemenang Juara 1 Lomba Desain Nasional 2018.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Proyek Unggulan -->
-            <section class="main-section">
-                <h2 class="section-title-lg"><i class="ph ph-star"></i> Proyek Unggulan</h2>
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <div class="exp-title">Re-Design Aplikasi E-Commerce Lokal</div>
-                    </div>
-                    <div class="exp-desc">
-                        <p><strong>Tantangan:</strong> Mengurangi tingkat pembatalan pesanan (*cart abandonment*) yang tinggi di langkah checkout.</p>
-                        <p><strong>Solusi:</strong> Merancang ulang alur checkout menjadi 3 langkah sederhana dengan validasi real-time.</p>
-                        <p><strong>Hasil:</strong> Studi kasus ini memproyeksikan penurunan pembatalan sebesar 20% jika diterapkan. Publikasi artikel di *Medium Design* dengan 5k+ pembaca.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Referensi -->
-            <section class="main-section">
-                <h2 class="section-title-lg"><i class="ph ph-users-three"></i> Referensi</h2>
-                <p style="color: var(--secondary); font-size: 0.95rem; font-style: italic;">
-                    Tersedia atas permintaan. Silakan hubungi untuk referensi lebih lanjut.
-                </p>
-            </section>
-
-        </main>
+        </footer>
     </div>
 
 </body>
