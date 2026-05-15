@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Link in Bio | [Ganti Nama Anda]</title>
+    <title>Link in Bio | @Namamu</title>
+    <!-- Phosphor Icons CDN - ringan & premium -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
     <style>
         * {
             margin: 0;
@@ -13,66 +15,69 @@
 
         body {
             font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9eef5 100%);
+            background: radial-gradient(circle at 20% 50%, #f8bf9b, #e26d5c);
             min-height: 100vh;
+            padding: 24px 16px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 24px 16px;
         }
 
-        /* Kartu utama */
-        .card {
-            max-width: 600px;
+        /* Card transparan (glassmorphism ringan) */
+        .glass-card {
+            max-width: 560px;
             width: 100%;
             margin: 0 auto;
-            background: white;
-            border-radius: 36px;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
-            padding: 32px 24px 48px;
-            transition: transform 0.2s ease;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 32px 24px 44px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.2s ease;
         }
 
         /* Profil */
         .profile {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 96px;
+            height: 96px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid white;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            margin-bottom: 16px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+            margin-bottom: 14px;
         }
 
         .name {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 700;
-            color: #1e293b;
+            color: white;
             letter-spacing: -0.3px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
         .bio {
-            color: #475569;
-            margin-top: 8px;
-            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 6px;
+            font-size: 0.9rem;
             line-height: 1.4;
-            max-width: 80%;
+            max-width: 85%;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Statistik opsional */
+        /* Statistik ringan */
         .stats {
             display: flex;
             justify-content: center;
             gap: 32px;
-            margin: 20px 0 24px;
+            margin: 16px 0 24px;
         }
 
         .stat-item {
@@ -81,44 +86,44 @@
 
         .stat-number {
             font-weight: 800;
-            font-size: 1.3rem;
-            color: #0f172a;
+            font-size: 1.2rem;
+            color: white;
         }
 
         .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.7);
             letter-spacing: 0.5px;
         }
 
-        /* Daftar tautan */
+        /* Daftar tautan - transparan juga tapi tetap terbaca */
         .links {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            margin: 24px 0 32px;
+            gap: 14px;
+            margin: 20px 0 28px;
         }
 
         .link-btn {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #f8fafc;
-            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 12px 20px;
             border-radius: 60px;
             text-decoration: none;
-            color: #0f172a;
+            color: white;
             font-weight: 500;
-            transition: all 0.25s ease;
-            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .link-btn:hover {
-            background: #ffffff;
-            border-color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.35);
             transform: scale(1.01);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .link-left {
@@ -127,141 +132,153 @@
             gap: 12px;
         }
 
-        .emoji {
+        /* Phosphor icon styling */
+        .link-left i {
             font-size: 1.5rem;
+            color: white;
         }
 
-        .arrow {
+        .arrow i {
             font-size: 1.2rem;
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.8);
             transition: transform 0.2s;
         }
 
-        .link-btn:hover .arrow {
+        .link-btn:hover .arrow i {
             transform: translateX(4px);
-            color: #3b82f6;
+            color: white;
         }
 
-        /* Tombol sosial media (opsional) */
+        /* Social row */
         .social-row {
             display: flex;
             justify-content: center;
-            gap: 24px;
-            margin-top: 20px;
+            gap: 28px;
+            margin-top: 16px;
             flex-wrap: wrap;
         }
 
         .social-icon {
-            font-size: 1.7rem;
+            font-size: 0;
             text-decoration: none;
-            color: #64748b;
-            transition: color 0.2s, transform 0.1s;
+            transition: transform 0.15s;
+            background: rgba(255, 255, 255, 0.2);
+            width: 44px;
+            height: 44px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .social-icon i {
+            font-size: 1.5rem;
+            color: white;
         }
 
         .social-icon:hover {
-            color: #0f172a;
+            background: rgba(255, 255, 255, 0.4);
             transform: translateY(-2px);
         }
 
-        /* footer */
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 0.7rem;
-            color: #94a3b8;
+        hr {
+            margin: 22px 0 14px;
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        hr {
-            margin: 16px 0;
-            border: none;
-            border-top: 1px solid #eef2f6;
+        .footer {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.7);
         }
     </style>
 </head>
 <body>
 
-<div class="card">
+<div class="glass-card">
     <div class="profile">
-        <!-- Ganti foto dengan URL foto Anda -->
-        <img class="avatar" src="https://placehold.co/400x400/1e293b/ffffff?text=LOGO" alt="Foto profil">
-        <div class="name">@Namamu</div>
+        <img class="avatar" src="https://placehold.co/400x400/ffffff/999999?text=🍔" alt="avatar">
+        <div class="name">@KulineranFood</div>
         <div class="bio">
-            📍 Foodie | Content Creator<br>
-            Rekomendasi kuliner & direktori favorit ✨
+            🍜 Food reviewer & direktori kuliner <br>
+            Jajanan viral & hidden gem
         </div>
     </div>
 
-    <!-- Stat sederhana (opsional, hapus jika tidak perlu) -->
+    <!-- Stat minimalis -->
     <div class="stats">
         <div class="stat-item">
             <div class="stat-number">10K+</div>
             <div class="stat-label">Followers</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">150+</div>
+            <div class="stat-number">250+</div>
             <div class="stat-label">Reviews</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">30+</div>
+            <div class="stat-number">50+</div>
             <div class="stat-label">Partner</div>
         </div>
     </div>
 
-    <!-- DAFTAR LINK IN BIO -- Ganti sesuai kebutuhan -->
+    <!-- Daftar link in bio -->
     <div class="links">
-        <a href="https://tiktok.com/@namamu" target="_blank" rel="noopener noreferrer" class="link-btn">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="link-btn">
             <div class="link-left">
-                <span class="emoji">📱</span>
-                <span>TikTok - Konten Viral & Review</span>
+                <i class="ph ph-tiktok-logo"></i>
+                <span>TikTok - Review Viral</span>
             </div>
-            <span class="arrow">→</span>
+            <div class="arrow"><i class="ph ph-arrow-right"></i></div>
         </a>
 
-        <a href="https://instagram.com/namamu" target="_blank" rel="noopener noreferrer" class="link-btn">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="link-btn">
             <div class="link-left">
-                <span class="emoji">📸</span>
-                <span>Instagram - Daily Food & Behind Scene</span>
+                <i class="ph ph-instagram-logo"></i>
+                <span>Instagram - Food Daily</span>
             </div>
-            <span class="arrow">→</span>
+            <div class="arrow"><i class="ph ph-arrow-right"></i></div>
         </a>
 
-        <a href="https://namablogkamu.com/directory" target="_blank" rel="noopener noreferrer" class="link-btn">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="link-btn">
             <div class="link-left">
-                <span class="emoji">🍽️</span>
+                <i class="ph ph-binoculars"></i>
                 <span>Direktori Kuliner Terbaru</span>
             </div>
-            <span class="arrow">→</span>
+            <div class="arrow"><i class="ph ph-arrow-right"></i></div>
         </a>
 
-        <a href="https://namablogkamu.com/rekomendasi" target="_blank" rel="noopener noreferrer" class="link-btn">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="link-btn">
             <div class="link-left">
-                <span class="emoji">🔥</span>
+                <i class="ph ph-fire"></i>
                 <span>Rekomendasi Viral Minggu Ini</span>
             </div>
-            <span class="arrow">→</span>
+            <div class="arrow"><i class="ph ph-arrow-right"></i></div>
         </a>
 
-        <!-- Tambahkan tombol WA/Telegram channel -->
-        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="link-btn">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="link-btn">
             <div class="link-left">
-                <span class="emoji">💬</span>
-                <span>Chat WhatsApp (kerjasama)</span>
+                <i class="ph ph-whatsapp-logo"></i>
+                <span>Kerjasama / Endorse</span>
             </div>
-            <span class="arrow">→</span>
+            <div class="arrow"><i class="ph ph-arrow-right"></i></div>
         </a>
     </div>
 
-    <!-- Ikon sosial media tambahan -->
+    <!-- Sosial media icon circle -->
     <div class="social-row">
-        <a href="#" class="social-icon" aria-label="YouTube">▶️</a>
-        <a href="#" class="social-icon" aria-label="Twitter">🐦</a>
-        <a href="#" class="social-icon" aria-label="TikTok">🎵</a>
-        <a href="#" class="social-icon" aria-label="Email">✉️</a>
+        <a href="#" class="social-icon"><i class="ph ph-youtube-logo"></i></a>
+        <a href="#" class="social-icon"><i class="ph ph-twitter-logo"></i></a>
+        <a href="#" class="social-icon"><i class="ph ph-tiktok-logo"></i></a>
+        <a href="#" class="social-icon"><i class="ph ph-envelope"></i></a>
     </div>
 
     <hr>
     <div class="footer">
-        Untuk kerjasama / review produk 📧 namakamu@email.com
+        📧 kulineran@email.com | #FoodHunter
     </div>
 </div>
 
