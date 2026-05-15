@@ -1,453 +1,231 @@
 <!DOCTYPE html>
-<html lang="id" style="scroll-behavior: smooth;">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Minimalis Monokrom</title>
-    <!-- Memuat Lucide Icons untuk ikon outline yang minimalis -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Memuat Font IBM Plex Mono dari Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
+    <title>CV Minimalis - Nama Anda</title>
     <style>
-        /* BASE STYLES - FONT, COLORS, TRANSITIONS */
-        body {
-            font-family: 'IBM Plex Mono', monospace;
-            transition: background-color 0.3s, color 0.3s;
-            min-height: 100vh;
-            /* Padding atas dan bawah untuk body */
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-            background-color: #f9f9f9; 
-            color: #1f2937;
-        }
-
-        /* DARK MODE STYLES */
-        .dark {
-            background-color: #111827;
-            color: #f3f4f6;
-        }
-
-        /* CONTAINER: LEBAR MAKSIMAL 768PX DAN TENGAH */
-        .container {
-            max-width: 768px; 
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem; 
-            padding-right: 1rem;
-        }
-
-        /* HEADER & NAVIGASI */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid currentColor;
-            margin-bottom: 2rem; 
-        }
-
-        .blog-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: default;
-            transition: opacity 0.15s;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            font-size: 1rem;
-        }
-        @media (max-width: 640px) {
-            nav { gap: 1rem; font-size: 0.875rem; }
-            .blog-title { font-size: 1.25rem; }
-        }
-
-        .nav-link {
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: 0.25rem 0;
-            color: inherit;
-        }
-        .nav-link:hover {
-            text-decoration: underline;
-        }
-        .nav-link.active {
-            font-weight: 700;
-            border-bottom: 2px solid currentColor;
-        }
-
-
-        /* HOME SECTION */
-        #section-home {
-            text-align: center;
-            padding: 1.2rem 0; 
-        }
-        #section-home p {
-            font-size: 1.5rem;
-            line-height: 1.5;
-            text-transform: uppercase;
-            margin: 0 auto;
-            max-width: 100%;
-        }
-        @media (max-width: 640px) {
-            #section-home p { font-size: 1.1rem; }
-        }
-
-
-        /* POST LIST STYLES */
-        #section-posts {
+        /* Reset Dasar */
+        * {
+            margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        #post-list {
-            padding-top: 0; 
-            padding-bottom: 1rem;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
         }
-        .post-item {
+
+        /* Container Utama */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .role {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .contact-info span {
+            margin: 0 10px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Experience & Education Items */
+        .item {
+            margin-bottom: 20px;
+        }
+
+        .item-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 1.2rem 0; 
-            cursor: pointer;
-            transition: opacity 0.15s;
-        }
-        .post-item:hover {
-            border-bottom: 1px solid currentColor;
-            opacity: 0.8;
-            background-color: transparent;
+            margin-bottom: 5px;
         }
 
-        .post-title {
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-right: 1.5rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            font-size: 1.125rem;
-        }
-        .post-date-list {
-            white-space: nowrap;
-            margin-left: 1.5rem;
-            text-align: right;
-            font-size: 1.125rem;
-        }
-        @media (max-width: 640px) {
-            .post-title, .post-date-list { font-size: 0.95rem; }
+        .item-title {
+            font-weight: bold;
+            font-size: 1.1rem;
         }
 
-        /* DASHEL LINE SEPARATOR (HIPEN PANJANG) */
-        .post-separator {
-            flex-grow: 1;
-            border-bottom: 1px dashed currentColor; 
-            opacity: 0.3; 
-            margin: 0 4rem; 
-            height: 0.75rem; 
-            display: none;
-        }
-        @media (min-width: 768px) { 
-            .post-separator { display: block; }
+        .item-subtitle {
+            font-style: italic;
+            color: #555;
         }
 
-
-        /* POST DETAIL STYLES */
-        #section-post-detail {
-            padding: 1.2rem 0;
-        }
-        .detail-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            line-height: 1.2;
-            /* PERBAIKAN: Negative margin untuk mengangkat judul agar sejajar dengan POST LIST */
-            margin-top: -0.25rem; 
-            margin-bottom: 0;
-        }
-        .detail-date {
-            font-size: 0.875rem; 
-            text-transform: uppercase;
-            opacity: 0.7; 
-            margin-top: 0.5rem; 
-            margin-bottom: 3rem; 
-            display: block;
-        }
-        .detail-body {
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-        .detail-body p {
-            margin-bottom: 2rem; 
+        .item-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
         }
 
-        /* TOGGLE MODE STYLES */
-        .toggle-button {
-            border: none;
-            background: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: background-color 0.15s;
-            color: inherit;
+        .item-desc ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        .item-desc li {
+            margin-bottom: 5px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .toggle-button:hover { background-color: rgba(0, 0, 0, 0.05); } 
-        .dark .toggle-button:hover { background-color: rgba(255, 255, 255, 0.05); }
 
-        /* Ikon Visibility Logic */
-        #sun-icon { display: none; }
-        .dark #sun-icon { display: block; }
-        .dark #moon-icon { display: none; }
-        #moon-icon { display: block; }
+        .skill-tag {
+            background: #ecf0f1;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
 
-        /* Utility */
-        .hidden {
-            display: none !important;
+        /* Print Style: Agar rapi saat dicetak ke PDF */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                width: 100%;
+                padding: 0;
+            }
+            a {
+                text-decoration: none;
+                color: #333;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- CONTAINER FOKUS LEBAR MAKS 768PX -->
     <div class="container">
-
-        <!-- HEADER / NAVIGASI -->
+        <!-- Header -->
         <header>
-            <!-- Nama Blog (Kiri) -->
-            <h1 class="blog-title">
-                BLOG MONO
-            </h1>
-
-            <!-- Link Navigasi dan Toggle Mode (Kanan) -->
-            <nav>
-                
-                <!-- Navigasi Link -->
-                <a href="#home" id="nav-home" class="nav-link" data-section="home">HOME</a>
-                <a href="#posts" id="nav-posts" class="nav-link" data-section="posts">POST LIST</a>
-
-                <!-- Tombol Toggle Mode Gelap/Terang -->
-                <button id="mode-toggle" class="toggle-button" aria-label="Toggle Dark Mode">
-                    <i data-lucide="moon" id="moon-icon" class="toggle-icon"></i>
-                    <i data-lucide="sun" id="sun-icon" class="toggle-icon"></i>
-                </button>
-            </nav>
+            <h1>Budi Santoso</h1>
+            <p class="role">Senior Marketing Specialist</p>
+            <div class="contact-info">
+                <span>📧 budi.santoso@email.com</span> |
+                <span>📞 +62 812 3456 7890</span> |
+                <span>📍 Jakarta, Indonesia</span> |
+                <span>🔗 linkedin.com/in/budisantoso</span>
+            </div>
         </header>
 
-        <!-- AREA KONTEN UTAMA -->
-        <main id="content-container">
+        <!-- Ringkasan Profesional -->
+        <section class="section">
+            <h2 class="section-title">Ringkasan</h2>
+            <p>Spesialis pemasaran dengan pengalaman 7+ tahun dalam strategi digital dan manajemen merek. Terbukti meningkatkan engagement media sosial sebesar 40% dan konversi penjualan sebesar 25% melalui kampanye yang terukur. Menguasai analisis data dan kepemimpinan tim.</p>
+        </section>
+
+        <!-- Pengalaman Kerja -->
+        <section class="section">
+            <h2 class="section-title">Pengalaman Kerja</h2>
             
-            <!-- Bagian 1: Home -->
-            <section id="section-home" class="content-section">
-                <p>
-                    CATATAN ARSIP DIGITAL TERFOKUS PADA MINIMALISME, TYPOGRAPHY MONOSPASI, DAN KETERBACAAN MAKSIMAL. KAMI HANYA MENYIMPAN APA YANG PENTING.
-                </p>
-            </section>
-
-            <!-- Bagian 2: Post List -->
-            <section id="section-posts" class="content-section hidden">
-                
-                <div id="post-list">
-                    
-                    <!-- DUMMY POST ITEM 1 -->
-                    <div class="post-item" data-post-id="mono-design">
-                        <span class="post-title">FILOSOFI DESAIN MINIMALIS MONO</span>
-                        <span class="post-separator"></span>
-                        <span class="post-date-list">12.10.2025</span>
-                    </div>
-
-                    <!-- DUMMY POST ITEM 2 -->
-                    <div class="post-item" data-post-id="max-readability">
-                        <span class="post-title">STRUKTUR UNTUK KETERBACAAN MAKSIMAL</span>
-                        <span class="post-separator"></span>
-                        <span class="post-date-list">01.09.2025</span>
-                    </div>
-
-                    <!-- DUMMY POST ITEM 3 -->
-                    <div class="post-item" data-post-id="type-exp">
-                        <span class="post-title">EKSPERIMEN TYPOGRAPHY MONOSPASI</span>
-                        <span class="post-separator"></span>
-                        <span class="post-date-list">25.08.2025</span>
-                    </div>
-
-                    <!-- DUMMY POST ITEM 4 -->
-                    <div class="post-item" data-post-id="negative-space">
-                        <span class="post-title">PENGGUNAAN RUANG NEGATIF DALAM WEB</span>
-                        <span class="post-separator"></span>
-                        <span class="post-date-list">05.08.2025</span>
-                    </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Senior Marketing Manager</span>
+                    <span class="item-date">2022 - Sekarang</span>
                 </div>
-            </section>
-            
-            <!-- Bagian 3: Post Detail - INI ADALAH TEMPAT KONTEN AKAN DITAMPILKAN -->
-            <section id="section-post-detail" class="content-section hidden">
-                <h2 id="detail-title" class="detail-title"></h2>
-                <span id="detail-date" class="detail-date"></span>
-                <div id="detail-body" class="detail-body"></div>
-            </section>
+                <div class="item-subtitle">PT. Maju Mundur Digital | Jakarta</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Memimpin tim beranggotakan 10 orang untuk menjalankan strategi pemasaran digital.</li>
+                        <li>Meningkatkan ROI iklan Facebook Ads dari 3x menjadi 5x dalam satu tahun.</li>
+                        <li>Berhasil meluncurkan 2 produk baru yang menghasilkan pendapatan Rp 5M dalam kuartal pertama.</li>
+                    </ul>
+                </div>
+            </div>
 
-        </main>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Marketing Specialist</span>
+                    <span class="item-date">2019 - 2022</span>
+                </div>
+                <div class="item-subtitle">CV. Kreatif Nusantara | Bandung</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Menyusun dan mengeksekusi konten kalender media sosial untuk 5 klien utama.</li>
+                        <li>Mengelola anggaran iklan bulanan sebesar Rp 100 juta.</li>
+                        <li>Mengkoordinasikan event offline dan webinar untuk lead generation.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pendidikan -->
+        <section class="section">
+            <h2 class="section-title">Pendidikan</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">S1 Manajemen Pemasaran</span>
+                    <span class="item-date">2015 - 2019</span>
+                </div>
+                <div class="item-subtitle">Universitas Indonesia</div>
+            </div>
+        </section>
+
+        <!-- Keahlian -->
+        <section class="section">
+            <h2 class="section-title">Keahlian</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Google Analytics</span>
+                <span class="skill-tag">SEO & SEM</span>
+                <span class="skill-tag">Copywriting</span>
+                <span class="skill-tag">Social Media Management</span>
+                <span class="skill-tag">Team Leadership</span>
+                <span class="skill-tag">Adobe Photoshop</span>
+                <span class="skill-tag">Data Analysis</span>
+            </div>
+        </section>
     </div>
 
-    <script>
-        
-        // Data Dummy Post LENGKAP - DATA INI AKAN DIMUAT KE SECTION POST DETAIL
-        const DUMMY_POSTS = [
-            { 
-                id: 'mono-design', 
-                title: 'FILOSOFI DESAIN MINIMALIS MONO', 
-                date: '12.10.2025', 
-                body: `
-                    <p>MINIMALISME BUKANLAH TENTANG KEKURANGAN, TAPI TENTANG KEJELASAN. DALAM WEB DESIGN, INI BERARTI MENGHILANGKAN SEGALA SESUATU YANG TIDAK BERFUNGSI UNTUK MEMBANTU TUJUAN UTAMA PENGGUNA: MEMBACA. KAMI MENGGUNAKAN HANYA DUA WARNA DOMINAN: HITAM DAN PUTIH, DIKOMBINASIKAN DENGAN FONT MONOSPASI.</p>
-                    <p><strong>TYPOGRAPHY ADALAH KONTEN UTAMA.</strong> DI SINI, TEKS BUKAN SEKADAR MEDIA, TETAPI SENDIRI ADALAH ELEMEN VISUAL DAN STRUKTURAL UTAMA. KAMI MENGHINDARI WARNA DAN ORNAMEN BERLEBIH.</p>
-                    <p>STRUKTUR INI MENGHARGAI WAKTU DAN FOKUS PEMBACA. TIDAK ADA IKLAN, TIDAK ADA POP-UP. HANYA INFORMASI YANG DIATUR DENGAN RAPI.</p>
-                ` 
-            },
-            { 
-                id: 'max-readability', 
-                title: 'STRUKTUR UNTUK KETERBACAAN MAKSIMAL', 
-                date: '01.09.2025', 
-                body: `
-                    <p>KETERBACAAN TINGGI DICAPAI MELALUI PERPADUAN LINE-HEIGHT YANG LUAS (1.8), JARAK PARAGRAF YANG JELAS, DAN LEBAR TEKS MAKSIMAL (DIBAWAH 80 KARAKTER PER BARIS). INI MEMBUAT MATA LEBIH MUDAH BERPINDAH ANTAR BARIS TANPA KEHILANGAN FOKUS.</p>
-                    <p>KAMI MENJAGA SEMUA ELEMEN TETAP **GRID-ALIGNED**, MEMASTIKAN BAHWA SEMUA MARGIN DAN PADDING ADALAH KELIPATAN DARI NILAI DASAR TERTENTU. KESERAGAMAN INI MENGUATKAN TAMPILAN MINIMALIS DAN MONOKROM.</p>
-                `
-            },
-            { 
-                id: 'type-exp', 
-                title: 'EKSPERIMEN TYPOGRAPHY MONOSPASI', 
-                date: '25.08.2025', 
-                body: `
-                    <p>IBM PLEX MONO MEMBERIKAN NUANSA KODE DAN ARSIP PADA SETIAP POSTINGAN. MEMANG, FONT MONOSPASI SEDIKIT LEBIH SULIT DIBACA DARI SANS-SERIF TRADISIONAL, TAPI INI ADALAH PILIHAN ESTETIK YANG KONSISTEN DENGAN TEMA BLOG KAMI. INI ADALAH PENYATAAN VISUAL.</p>
-                    <p>PENGGUNAAN HURUF KAPITAL SEMUA (UPPERCASE) JUGA MENAMBAHKAN KESERIUSAN DAN KONTRAST YANG TINGGI, TERUTAMA PADA JUDUL DAN HEADING.</p>
-                ` 
-            },
-            { 
-                id: 'negative-space', 
-                title: 'PENGGUNAAN RUANG NEGATIF DALAM WEB', 
-                date: '05.08.2025', 
-                body: `
-                    <p>RUANG KOSONG (NEGATIF SPACE) ADALAH SAHABAT TERBAIK MINIMALISME. KAMI MENGGUNAKANNYA SECARA AGRESIF UNTUK MENARIK PERHATIAN PADA ELEMEN YANG TERSISA. LIHATLAH JARAK ANTARA JUDUL POST DAN TANGGAL, ATAU JARAK LEBAR DI SEKITAR TEKS BODY.</p>
-                    <p>RUANG NEGATIF BUKANLAH RUANG MATI; ITU ADALAH RUANG YANG MENGAMBIL NAPAS, MEMUNGKINKAN MATA MEMPROSES INFORMASI TANPA KELELAHAN VISUAL.</P>
-                ` 
-            },
-        ];
-
-        // Fungsi untuk mengaktifkan atau menonaktifkan dark mode
-        const toggleDarkMode = () => {
-            const body = document.body;
-            const isDarkMode = body.classList.toggle('dark');
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        };
-
-        // Fungsi untuk mengelola kelas 'active' pada link navigasi
-        const updateActiveClass = (activeSectionId) => {
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            const activeNav = document.querySelector(`.nav-link[data-section="${activeSectionId}"]`);
-            if (activeNav) {
-                activeNav.classList.add('active');
-            } else if (activeSectionId === 'post-detail') {
-                // Saat di halaman detail, aktifkan link POST LIST
-                document.querySelector('.nav-link[data-section="posts"]').classList.add('active');
-            }
-        };
-
-        // Fungsi untuk inisialisasi tema
-        const initTheme = () => {
-            const body = document.body;
-            const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-            if (currentTheme === 'dark') {
-                body.classList.add('dark');
-            }
-            lucide.createIcons();
-        }
-
-        // --- Logika Navigasi Section ---
-        const showSection = (sectionId) => {
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => {
-                section.classList.add('hidden');
-            });
-            const targetSection = document.getElementById(`section-${sectionId}`);
-            if (targetSection) {
-                targetSection.classList.remove('hidden');
-            }
-            updateActiveClass(sectionId);
-            window.scrollTo(0, 0); // Gulir ke atas saat berpindah section
-        };
-        
-        // --- Logika Memuat Post Detail ---
-        const loadPostDetail = (postId) => {
-            const post = DUMMY_POSTS.find(p => p.id === postId);
-            if (!post) {
-                console.error(`Post ID ${postId} tidak ditemukan.`);
-                showSection('home');
-                return;
-            }
-
-            document.getElementById('detail-title').textContent = post.title;
-            document.getElementById('detail-date').textContent = post.date;
-            document.getElementById('detail-body').innerHTML = post.body;
-
-            // Set hash dan biarkan hashchange yang memicu showSection
-            window.location.hash = `post/${postId}`;
-        };
-
-        // Logika Router Sederhana
-        const handleRouting = () => {
-            const hash = window.location.hash.substring(1);
-            
-            if (hash.startsWith('post/')) {
-                const postId = hash.split('/')[1];
-                // Memastikan section ditunjukkan meskipun hash berubah
-                showSection('post-detail'); 
-                // Karena showSection sudah dipanggil, kita hanya perlu update kontennya
-                loadPostDetail(postId); 
-            } else if (hash === 'posts' || hash === 'home') {
-                showSection(hash);
-            } else {
-                showSection('home');
-                window.location.hash = 'home';
-            }
-        };
-
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Inisialisasi Tema (Mode Gelap/Terang)
-            initTheme();
-
-            // 2. Listener Toggle Mode
-            const modeToggle = document.getElementById('mode-toggle');
-            modeToggle.addEventListener('click', toggleDarkMode);
-
-            // 3. Listener Klik pada Item Post (untuk navigasi ke Post Detail)
-            document.querySelectorAll('.post-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const postId = item.getAttribute('data-post-id');
-                    loadPostDetail(postId); // Langsung panggil loadPostDetail
-                });
-            });
-
-            // 4. Inisialisasi Navigasi dan Router
-            handleRouting();
-            window.addEventListener('hashchange', handleRouting);
-            
-            // Listener klik untuk link navigasi utama (HOME/POST LIST)
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const sectionId = e.currentTarget.getAttribute('data-section');
-                    window.location.hash = sectionId;
-                });
-            });
-        });
-    </script>
 </body>
 </html>
