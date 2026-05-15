@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aisha Putri | Minimalist Portfolio</title>
+    <title>Aisha Putri | Framer Style Portfolio</title>
     
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
-    <!-- Google Fonts: Plus Jakarta Sans -->
+    <!-- Google Fonts: Inter (Framer's go-to font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Palette Ultra-Minimalist */
-            --bg-color: #f4f4f5;          /* Abu-abu sangat muda (hampir putih) */
-            --primary-color: #18181b;     /* Charcoal/Deep Black (Warna utama) */
-            --text-white: #ffffff;        /* Teks di atas background gelap */
-            --shadow-float: 0 10px 30px -5px rgba(0, 0, 0, 0.08); /* Shadow halus & luas */
-            --shadow-hover: 0 20px 40px -5px rgba(0, 0, 0, 0.15); /* Shadow lebih dalam saat hover */
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            /* Framer-Inspired Palette */
+            --bg: #0a0a0a;            /* Deep black background */
+            --surface: #171717;       /* Slightly lighter surface */
+            --text: #ffffff;          /* Pure white text */
+            --text-muted: #a3a3a3;    /* Muted gray text */
+            --accent: #3b82f6;        /* Vibrant blue (Framer-like) */
+            --accent-glow: rgba(59, 130, 246, 0.3);
+            --border: #262626;        /* Subtle border */
+            --radius: 12px;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.5);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.6);
+            --transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         * {
@@ -31,246 +36,293 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--primary-color);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Subtle background gradient glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0.4;
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
         }
 
         .container {
             width: 100%;
-            max-width: 500px;
+            max-width: 680px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 40px; /* Space antar section sangat lega */
+            gap: 60px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* --- HEADER SECTION --- */
+        /* --- HEADER --- */
         .header {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .avatar-icon {
-            width: 100px;
-            height: 100px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-white);
-            font-size: 3rem;
-            box-shadow: var(--shadow-float);
-            transition: var(--transition);
-        }
-
-        .avatar-icon i {
-            font-weight: bold;
+            text-align: left;
+            animation: fadeIn 0.8s ease-out;
         }
 
         .name {
-            font-size: 1.8rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
-            color: var(--primary-color);
-            letter-spacing: -0.5px;
-            margin: 0;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #fff 0%, #a3a3a3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .role {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             font-weight: 500;
-            color: #71717a; /* Abu-abu netral */
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* --- LINKS SECTION --- */
-        .links-grid {
-            width: 100%;
+        .role-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        /* --- LINKS (Framer-style cards) --- */
+        .links-section {
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
 
-        .floating-btn {
+        .link-card {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Icon kiri, teks tengah, panah kanan */
-            width: 100%;
+            justify-content: space-between;
             padding: 20px 24px;
-            background: var(--primary-color);
-            color: var(--text-white);
-            border-radius: 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            
-            /* Hapus border, hanya shadow */
-            box-shadow: var(--shadow-float);
-            
+            color: var(--text);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
 
-        .floating-btn .btn-left {
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .link-card:hover {
+            border-color: #404040;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .link-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .link-left {
             display: flex;
             align-items: center;
-            gap: 15px;
-        }
-
-        .floating-btn i {
-            font-size: 1.4rem;
-            color: var(--text-white);
-        }
-
-        .floating-btn .arrow-icon {
-            font-size: 1.2rem;
-            opacity: 0.7;
-            transition: transform 0.3s;
-        }
-
-        /* Hover Effect: Bayangan lebih dalam, tombol naik sedikit */
-        .floating-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .floating-btn:hover .arrow-icon {
-            transform: translateX(4px);
-            opacity: 1;
-        }
-
-        /* --- PORTFOLIO SECTION --- */
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #a1a1aa;
-            margin-bottom: 10px;
-            align-self: flex-start;
-            padding-left: 4px;
-        }
-
-        .portfolio-grid {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 16px;
         }
 
-        .portfolio-card {
+        .link-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: var(--primary-color);
-            padding: 30px 10px;
-            border-radius: 16px;
-            text-decoration: none;
-            color: var(--text-white);
-            box-shadow: var(--shadow-float);
+            font-size: 1.2rem;
+            color: var(--text);
             transition: var(--transition);
-            text-align: center;
+        }
+
+        .link-card:hover .link-icon {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .link-text {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .link-arrow {
+            opacity: 0.5;
+            transition: var(--transition);
+        }
+
+        .link-card:hover .link-arrow {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+
+        /* --- PORTFOLIO GRID --- */
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            min-height: 180px;
+        }
+
+        .portfolio-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .portfolio-card:hover {
+            border-color: #404040;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-card:hover::after {
+            opacity: 1;
         }
 
         .portfolio-icon {
             font-size: 2.5rem;
-            margin-bottom: 12px;
-            opacity: 0.9;
+            color: var(--accent);
+            align-self: flex-start;
         }
 
-        .portfolio-title {
-            font-size: 0.95rem;
+        .portfolio-info h3 {
+            font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 4px;
         }
 
-        .portfolio-cat {
-            font-size: 0.75rem;
-            font-weight: 400;
-            opacity: 0.7;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
+        .portfolio-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
         }
 
         /* --- FOOTER --- */
         .footer {
-            margin-top: 20px;
             display: flex;
+            justify-content: center;
             gap: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
         }
 
-        .social-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--primary-color);
-            border-radius: 50%;
+        .social-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--surface);
+            border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-white);
+            color: var(--text);
             text-decoration: none;
-            box-shadow: var(--shadow-float);
             transition: var(--transition);
         }
 
-        .social-icon i {
-            font-size: 1.2rem;
-        }
-
-        .social-icon:hover {
+        .social-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
             transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: 0 10px 20px var(--accent-glow);
         }
 
         .copyright {
-            margin-top: 30px;
-            font-size: 0.75rem;
-            color: #a1a1aa;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #52525b;
             text-align: center;
         }
 
-        /* Responsive Mobile */
-        @media (max-width: 480px) {
-            .container {
-                gap: 30px;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr; /* Stack vertikal di HP */
-            }
-            .portfolio-card {
-                flex-direction: row;
-                justify-content: flex-start;
-                gap: 20px;
-                padding: 20px 24px;
-                text-align: left;
-            }
-            .portfolio-icon {
-                margin-bottom: 0;
-                font-size: 2rem;
-            }
-            .portfolio-info {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .name { font-size: 2.5rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .portfolio-card { min-height: auto; }
         }
     </style>
 </head>
@@ -278,54 +330,53 @@
 
     <div class="container">
         
-        <!-- Header: Icon Humanoid -->
+        <!-- Header -->
         <header class="header">
-            <div class="avatar-icon">
-                <!-- Icon Phosphor: User (Humanoid) -->
-                <i class="ph ph-user"></i>
-            </div>
             <h1 class="name">Aisha Putri</h1>
-            <div class="role">Senior Product Designer</div>
+            <div class="role">
+                <span class="role-dot"></span>
+                Senior Product Designer
+            </div>
         </header>
 
-        <!-- Links: Floating Buttons (No Border) -->
-        <section class="links-grid">
-            <a href="https://linkedin.com/in/aishaputri" class="floating-btn" target="_blank">
-                <div class="btn-left">
-                    <i class="ph ph-linkedin-logo"></i>
-                    <span>LinkedIn Profile</span>
+        <!-- Links -->
+        <section class="links-section">
+            <a href="https://linkedin.com/in/aishaputri" class="link-card" target="_blank">
+                <div class="link-left">
+                    <div class="link-icon"><i class="ph ph-linkedin-logo"></i></div>
+                    <span class="link-text">LinkedIn Profile</span>
                 </div>
-                <i class="ph ph-arrow-right arrow-icon"></i>
+                <i class="ph ph-arrow-right link-arrow"></i>
             </a>
 
-            <a href="mailto:aisha.putri@email.com" class="floating-btn" target="_blank">
-                <div class="btn-left">
-                    <i class="ph ph-envelope-simple"></i>
-                    <span>Email Me</span>
+            <a href="mailto:aisha.putri@email.com" class="link-card" target="_blank">
+                <div class="link-left">
+                    <div class="link-icon"><i class="ph ph-envelope-simple"></i></div>
+                    <span class="link-text">Email Me</span>
                 </div>
-                <i class="ph ph-arrow-right arrow-icon"></i>
+                <i class="ph ph-arrow-right link-arrow"></i>
             </a>
 
-            <a href="https://wa.me/628123456789" class="floating-btn" target="_blank">
-                <div class="btn-left">
-                    <i class="ph ph-whatsapp-logo"></i>
-                    <span>WhatsApp Chat</span>
+            <a href="https://wa.me/628123456789" class="link-card" target="_blank">
+                <div class="link-left">
+                    <div class="link-icon"><i class="ph ph-whatsapp-logo"></i></div>
+                    <span class="link-text">WhatsApp Chat</span>
                 </div>
-                <i class="ph ph-arrow-right arrow-icon"></i>
+                <i class="ph ph-arrow-right link-arrow"></i>
             </a>
         </section>
 
-        <!-- Portfolio: Icon Cards (No Border) -->
+        <!-- Portfolio -->
         <section>
-            <div class="section-label">Selected Works</div>
+            <div class="section-title">Selected Works</div>
             <div class="portfolio-grid">
                 
                 <!-- Porto 1 -->
                 <a href="#" class="portfolio-card" target="_blank">
                     <i class="ph ph-device-mobile portfolio-icon"></i>
                     <div class="portfolio-info">
-                        <div class="portfolio-title">Fintech App</div>
-                        <div class="portfolio-cat">UX Case Study</div>
+                        <h3>Fintech App</h3>
+                        <p>Complete UX overhaul increasing user retention by 40%.</p>
                     </div>
                 </a>
 
@@ -333,23 +384,23 @@
                 <a href="#" class="portfolio-card" target="_blank">
                     <i class="ph ph-laptop portfolio-icon"></i>
                     <div class="portfolio-info">
-                        <div class="portfolio-title">E-Commerce</div>
-                        <div class="portfolio-cat">UI Design</div>
+                        <h3>E-Commerce Web</h3>
+                        <p>Modern UI design with seamless checkout flow.</p>
                     </div>
                 </a>
 
             </div>
         </section>
 
-        <!-- Footer Socials -->
+        <!-- Footer -->
         <footer class="footer">
-            <a href="#" class="social-icon" target="_blank"><i class="ph ph-instagram-logo"></i></a>
-            <a href="#" class="social-icon" target="_blank"><i class="ph ph-behance-logo"></i></a>
-            <a href="#" class="social-icon" target="_blank"><i class="ph ph-dribbble-logo"></i></a>
+            <a href="#" class="social-btn" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+            <a href="#" class="social-btn" target="_blank"><i class="ph ph-behance-logo"></i></a>
+            <a href="#" class="social-btn" target="_blank"><i class="ph ph-dribbble-logo"></i></a>
         </footer>
 
         <div class="copyright">
-            © 2026 Aisha Putri. Pure Minimalist.
+            © 2026 Aisha Putri. Built with Framer vibes.
         </div>
 
     </div>
