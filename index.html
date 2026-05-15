@@ -2,33 +2,9 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aisha Putri | Framer Style Portfolio</title>
-    
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
-    <!-- Google Fonts: Inter (Framer's go-to font) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Link in Bio | [Ganti Nama Anda]</title>
     <style>
-        :root {
-            /* Framer-Inspired Palette */
-            --bg: #0a0a0a;            /* Deep black background */
-            --surface: #171717;       /* Slightly lighter surface */
-            --text: #ffffff;          /* Pure white text */
-            --text-muted: #a3a3a3;    /* Muted gray text */
-            --accent: #3b82f6;        /* Vibrant blue (Framer-like) */
-            --accent-glow: rgba(59, 130, 246, 0.3);
-            --border: #262626;        /* Subtle border */
-            --radius: 12px;
-            --shadow-sm: 0 4px 12px rgba(0,0,0,0.5);
-            --shadow-lg: 0 20px 40px rgba(0,0,0,0.6);
-            --transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -36,374 +12,258 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9eef5 100%);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 60px 20px;
-            line-height: 1.6;
-            overflow-x: hidden;
+            padding: 24px 16px;
         }
 
-        /* Subtle background gradient glow */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -20%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            opacity: 0.4;
-            filter: blur(80px);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .container {
+        /* Kartu utama */
+        .card {
+            max-width: 600px;
             width: 100%;
-            max-width: 680px;
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-            position: relative;
-            z-index: 1;
+            margin: 0 auto;
+            background: white;
+            border-radius: 36px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            padding: 32px 24px 48px;
+            transition: transform 0.2s ease;
         }
 
-        /* --- HEADER --- */
-        .header {
-            text-align: left;
-            animation: fadeIn 0.8s ease-out;
+        /* Profil */
+        .profile {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 16px;
         }
 
         .name {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            letter-spacing: -0.3px;
+        }
+
+        .bio {
+            color: #475569;
+            margin-top: 8px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Statistik opsional */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin: 20px 0 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
             font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.04em;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, #fff 0%, #a3a3a3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.3rem;
+            color: #0f172a;
         }
 
-        .role {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #64748b;
+            letter-spacing: 0.5px;
         }
 
-        .role-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent);
-            animation: pulse 2s infinite;
-        }
-
-        /* --- LINKS (Framer-style cards) --- */
-        .links-section {
+        /* Daftar tautan */
+        .links {
             display: flex;
             flex-direction: column;
             gap: 16px;
+            margin: 24px 0 32px;
         }
 
-        .link-card {
+        .link-btn {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px 24px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
+            background: #f8fafc;
+            padding: 14px 20px;
+            border-radius: 60px;
             text-decoration: none;
-            color: var(--text);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            color: #0f172a;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            border: 1px solid #e2e8f0;
         }
 
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .link-card:hover {
-            border-color: #404040;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .link-card:hover::before {
-            transform: translateX(100%);
+        .link-btn:hover {
+            background: #ffffff;
+            border-color: #cbd5e1;
+            transform: scale(1.01);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
 
         .link-left {
             display: flex;
             align-items: center;
-            gap: 16px;
-        }
-
-        .link-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--text);
-            transition: var(--transition);
-        }
-
-        .link-card:hover .link-icon {
-            background: var(--accent);
-            color: #fff;
-        }
-
-        .link-text {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .link-arrow {
-            opacity: 0.5;
-            transition: var(--transition);
-        }
-
-        .link-card:hover .link-arrow {
-            opacity: 1;
-            transform: translateX(4px);
-        }
-
-        /* --- PORTFOLIO GRID --- */
-        .section-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
             gap: 12px;
         }
 
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
+        .emoji {
+            font-size: 1.5rem;
         }
 
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+        .arrow {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            transition: transform 0.2s;
         }
 
-        .portfolio-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px;
-            text-decoration: none;
-            color: var(--text);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+        .link-btn:hover .arrow {
+            transform: translateX(4px);
+            color: #3b82f6;
+        }
+
+        /* Tombol sosial media (opsional) */
+        .social-row {
             display: flex;
-            flex-direction: column;
-            gap: 16px;
-            min-height: 180px;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
 
-        .portfolio-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
+        .social-icon {
+            font-size: 1.7rem;
+            text-decoration: none;
+            color: #64748b;
+            transition: color 0.2s, transform 0.1s;
         }
 
-        .portfolio-card:hover {
-            border-color: #404040;
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+        .social-icon:hover {
+            color: #0f172a;
+            transform: translateY(-2px);
         }
 
-        .portfolio-card:hover::after {
-            opacity: 1;
-        }
-
-        .portfolio-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            align-self: flex-start;
-        }
-
-        .portfolio-info h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .portfolio-info p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* --- FOOTER --- */
+        /* footer */
         .footer {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-        }
-
-        .social-btn {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-btn:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px var(--accent-glow);
-        }
-
-        .copyright {
-            margin-top: 40px;
-            font-size: 0.8rem;
-            color: #52525b;
             text-align: center;
+            margin-top: 40px;
+            font-size: 0.7rem;
+            color: #94a3b8;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .name { font-size: 2.5rem; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .portfolio-card { min-height: auto; }
+        hr {
+            margin: 16px 0;
+            border: none;
+            border-top: 1px solid #eef2f6;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <!-- Header -->
-        <header class="header">
-            <h1 class="name">Aisha Putri</h1>
-            <div class="role">
-                <span class="role-dot"></span>
-                Senior Product Designer
-            </div>
-        </header>
-
-        <!-- Links -->
-        <section class="links-section">
-            <a href="https://linkedin.com/in/aishaputri" class="link-card" target="_blank">
-                <div class="link-left">
-                    <div class="link-icon"><i class="ph ph-linkedin-logo"></i></div>
-                    <span class="link-text">LinkedIn Profile</span>
-                </div>
-                <i class="ph ph-arrow-right link-arrow"></i>
-            </a>
-
-            <a href="mailto:aisha.putri@email.com" class="link-card" target="_blank">
-                <div class="link-left">
-                    <div class="link-icon"><i class="ph ph-envelope-simple"></i></div>
-                    <span class="link-text">Email Me</span>
-                </div>
-                <i class="ph ph-arrow-right link-arrow"></i>
-            </a>
-
-            <a href="https://wa.me/628123456789" class="link-card" target="_blank">
-                <div class="link-left">
-                    <div class="link-icon"><i class="ph ph-whatsapp-logo"></i></div>
-                    <span class="link-text">WhatsApp Chat</span>
-                </div>
-                <i class="ph ph-arrow-right link-arrow"></i>
-            </a>
-        </section>
-
-        <!-- Portfolio -->
-        <section>
-            <div class="section-title">Selected Works</div>
-            <div class="portfolio-grid">
-                
-                <!-- Porto 1 -->
-                <a href="#" class="portfolio-card" target="_blank">
-                    <i class="ph ph-device-mobile portfolio-icon"></i>
-                    <div class="portfolio-info">
-                        <h3>Fintech App</h3>
-                        <p>Complete UX overhaul increasing user retention by 40%.</p>
-                    </div>
-                </a>
-
-                <!-- Porto 2 -->
-                <a href="#" class="portfolio-card" target="_blank">
-                    <i class="ph ph-laptop portfolio-icon"></i>
-                    <div class="portfolio-info">
-                        <h3>E-Commerce Web</h3>
-                        <p>Modern UI design with seamless checkout flow.</p>
-                    </div>
-                </a>
-
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <a href="#" class="social-btn" target="_blank"><i class="ph ph-instagram-logo"></i></a>
-            <a href="#" class="social-btn" target="_blank"><i class="ph ph-behance-logo"></i></a>
-            <a href="#" class="social-btn" target="_blank"><i class="ph ph-dribbble-logo"></i></a>
-        </footer>
-
-        <div class="copyright">
-            © 2026 Aisha Putri. Built with Framer vibes.
+<div class="card">
+    <div class="profile">
+        <!-- Ganti foto dengan URL foto Anda -->
+        <img class="avatar" src="https://placehold.co/400x400/1e293b/ffffff?text=LOGO" alt="Foto profil">
+        <div class="name">@Namamu</div>
+        <div class="bio">
+            📍 Foodie | Content Creator<br>
+            Rekomendasi kuliner & direktori favorit ✨
         </div>
-
     </div>
+
+    <!-- Stat sederhana (opsional, hapus jika tidak perlu) -->
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Followers</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Reviews</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">30+</div>
+            <div class="stat-label">Partner</div>
+        </div>
+    </div>
+
+    <!-- DAFTAR LINK IN BIO -- Ganti sesuai kebutuhan -->
+    <div class="links">
+        <a href="https://tiktok.com/@namamu" target="_blank" rel="noopener noreferrer" class="link-btn">
+            <div class="link-left">
+                <span class="emoji">📱</span>
+                <span>TikTok - Konten Viral & Review</span>
+            </div>
+            <span class="arrow">→</span>
+        </a>
+
+        <a href="https://instagram.com/namamu" target="_blank" rel="noopener noreferrer" class="link-btn">
+            <div class="link-left">
+                <span class="emoji">📸</span>
+                <span>Instagram - Daily Food & Behind Scene</span>
+            </div>
+            <span class="arrow">→</span>
+        </a>
+
+        <a href="https://namablogkamu.com/directory" target="_blank" rel="noopener noreferrer" class="link-btn">
+            <div class="link-left">
+                <span class="emoji">🍽️</span>
+                <span>Direktori Kuliner Terbaru</span>
+            </div>
+            <span class="arrow">→</span>
+        </a>
+
+        <a href="https://namablogkamu.com/rekomendasi" target="_blank" rel="noopener noreferrer" class="link-btn">
+            <div class="link-left">
+                <span class="emoji">🔥</span>
+                <span>Rekomendasi Viral Minggu Ini</span>
+            </div>
+            <span class="arrow">→</span>
+        </a>
+
+        <!-- Tambahkan tombol WA/Telegram channel -->
+        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="link-btn">
+            <div class="link-left">
+                <span class="emoji">💬</span>
+                <span>Chat WhatsApp (kerjasama)</span>
+            </div>
+            <span class="arrow">→</span>
+        </a>
+    </div>
+
+    <!-- Ikon sosial media tambahan -->
+    <div class="social-row">
+        <a href="#" class="social-icon" aria-label="YouTube">▶️</a>
+        <a href="#" class="social-icon" aria-label="Twitter">🐦</a>
+        <a href="#" class="social-icon" aria-label="TikTok">🎵</a>
+        <a href="#" class="social-icon" aria-label="Email">✉️</a>
+    </div>
+
+    <hr>
+    <div class="footer">
+        Untuk kerjasama / review produk 📧 namakamu@email.com
+    </div>
+</div>
 
 </body>
 </html>
