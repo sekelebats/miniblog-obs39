@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aisha Putri | Digital Portfolio</title>
+    <title>Aisha Putri | Portfolio</title>
     
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
-    <!-- Google Fonts: Outfit (Modern & Geometric) -->
+    <!-- Google Fonts: Plus Jakarta Sans (Clean & Modern) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Palette Premium: Deep Navy & Gold */
-            --primary: #0f172a;       /* Slate 900 - Teks utama */
-            --text-muted: #64748b;    /* Slate 500 - Teks sekunder */
-            --accent: #d4a017;        /* Metallic Gold - Aksen */
-            --bg-glass: rgba(255, 255, 255, 0.85); /* Putih transparan */
-            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Background halus */
-            --shadow-soft: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-            --shadow-float: 0 10px 25px rgba(0,0,0,0.1);
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            /* Palette: Warm Paper & Deep Blue */
+            --bg-paper: #f9f7f2;      /* Warna kertas krem */
+            --text-main: #1e293b;     /* Slate 800 - Hitam lembut */
+            --text-sub: #475569;      /* Slate 600 */
+            --accent: #0f172a;        /* Navy Gelap - Untuk hover */
+            --btn-border: #cbd5e1;    /* Border tombol */
+            --btn-shadow: rgba(15, 23, 42, 0.2);
+            --icon-color: #334155;
         }
 
         * {
@@ -35,390 +32,359 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background: #0f172a; /* Background gelap di luar agar card menonjol */
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-paper);
+            color: var(--text-main);
+            line-height: 1.6;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
-            color: var(--primary);
+            padding: 60px 20px;
+            /* Teks tambahan untuk kesan kertas */
+            background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+            background-size: 20px 20px;
         }
 
-        /* Container Utama (Card) */
-        .card-container {
+        /* Container Utama (Hanya pembatas lebar, tanpa background card) */
+        .content-wrapper {
             width: 100%;
-            max-width: 420px;
-            background: var(--bg-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-soft);
-            padding: 40px 30px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            animation: fadeIn 0.8s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Dekorasi Background Halus */
-        .card-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 160, 23, 0.05) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        /* Header Profile */
-        .header {
+            max-width: 600px;
             text-align: center;
-            margin-bottom: 35px;
-            position: relative;
-            z-index: 1;
         }
 
-        .avatar-wrapper {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
+        /* Header Section */
+        .header {
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             position: relative;
         }
 
         .avatar {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
             object-fit: cover;
-            border: 3px solid white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .status-badge {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            width: 18px;
-            height: 18px;
-            background: #10b981; /* Hijau online */
-            border: 3px solid white;
-            border-radius: 50%;
         }
 
         .name {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-main);
             letter-spacing: -0.5px;
         }
 
         .role {
-            font-size: 0.95rem;
-            color: var(--accent);
+            font-size: 1.1rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            background: rgba(212, 160, 23, 0.1);
-            padding: 6px 16px;
-            border-radius: 20px;
+            color: #d97706; /* Gold accent */
+            background: #fffbeb;
+            padding: 6px 20px;
+            border-radius: 50px;
             display: inline-block;
+            border: 1px solid #fcd34d;
         }
 
         /* Links Section */
-        .links-section {
-            margin-bottom: 35px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            display: block;
-            text-align: center;
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 50px;
         }
 
         .link-btn {
             display: flex;
             align-items: center;
+            justify-content: center;
             width: 100%;
-            padding: 16px 20px;
-            margin-bottom: 12px;
+            padding: 18px 24px;
             background: white;
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: var(--radius-md);
+            border: 2px solid var(--btn-border);
+            border-radius: 16px;
             text-decoration: none;
-            color: var(--primary);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
-            overflow: hidden;
+            
+            /* Shadow Nyata & Terang */
+            box-shadow: 0 4px 0 var(--btn-border), 
+                        0 10px 20px var(--btn-shadow);
         }
 
-        .link-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.05), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s;
+        .link-btn i {
+            font-size: 1.4rem;
+            margin-right: 12px;
+            color: var(--text-main);
         }
 
         .link-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+            background: var(--accent);
+            color: white;
             border-color: var(--accent);
-            color: var(--primary);
+            box-shadow: 0 6px 0 #020617, 
+                        0 15px 30px rgba(15, 23, 42, 0.3);
         }
 
-        .link-btn:hover::after {
-            transform: translateX(100%);
+        .link-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 var(--btn-border), 
+                        0 2px 5px var(--btn-shadow);
         }
 
-        .link-icon {
-            font-size: 1.4rem;
-            color: var(--accent);
-            margin-right: 15px;
-            min-width: 24px;
-            text-align: center;
-        }
-
-        .link-text {
-            flex-grow: 1;
-            text-align: left;
-        }
-
-        /* Portfolio Grid */
+        /* Portfolio Section */
         .portfolio-section {
-            position: relative;
-            z-index: 1;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-sub);
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            background: #cbd5e1;
+            flex-grow: 1;
+            max-width: 100px;
+            margin-left: 10px;
         }
 
         .portfolio-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 20px;
         }
 
         .portfolio-item {
-            position: relative;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            aspect-ratio: 1 / 1; /* Kotak sempurna */
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
-            opacity: 0;
-            transform: translateY(10px);
-            transition: var(--transition);
             display: flex;
-            align-items: flex-end;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform 0.2s;
+        }
+
+        .portfolio-icon-box {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 2px solid var(--btn-border);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            
+            /* Shadow sama dengan tombol */
+            box-shadow: 0 4px 0 var(--btn-border), 
+                        0 8px 15px var(--btn-shadow);
+            
+            transition: all 0.2s;
+        }
+
+        .portfolio-icon {
+            font-size: 2.5rem;
+            color: var(--icon-color);
+        }
+
+        .portfolio-item:hover .portfolio-icon-box {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 6px 0 var(--accent), 
+                        0 12px 25px var(--btn-shadow);
+        }
+
+        .portfolio-item:hover .portfolio-icon {
+            color: var(--accent);
         }
 
         .portfolio-title {
-            color: white;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 2px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
         }
 
         .portfolio-cat {
-            color: var(--accent);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            font-weight: 500;
         }
 
-        /* Hover Effects Portfolio */
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Footer */
+        /* Footer Socials */
         .footer {
-            text-align: center;
-            margin-top: 30px;
-            position: relative;
-            z-index: 1;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 30px;
+            width: 100%;
+        }
+
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: white;
+            border: 2px solid var(--btn-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-main);
+            
+            box-shadow: 0 3px 0 var(--btn-border), 
+                        0 6px 10px var(--btn-shadow);
+            
+            transition: all 0.2s;
+        }
+
+        .social-btn i {
+            font-size: 1.4rem;
+        }
+
+        .social-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 5px 0 #020617, 
+                        0 10px 20px rgba(15, 23, 42, 0.3);
+            transform: translateY(-3px);
         }
 
         .footer-text {
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: var(--text-sub);
+            font-weight: 500;
         }
 
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .social-link {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.03);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            text-decoration: none;
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-
-        .social-link:hover {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.1);
-        }
-
-        .social-link i {
-            font-size: 1.2rem;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
+        /* Responsive Mobile */
         @media (max-width: 480px) {
-            .card-container {
-                padding: 30px 20px;
-            }
-            .name {
-                font-size: 1.4rem;
-            }
             .portfolio-grid {
-                grid-template-columns: 1fr; /* Stack di HP */
+                grid-template-columns: 1fr; /* Stack vertikal di HP */
+            }
+            .portfolio-item {
+                flex-direction: row;
+                justify-content: center;
+                gap: 15px;
+                padding: 10px;
+            }
+            .portfolio-icon-box {
+                margin-bottom: 0;
+                width: 60px;
+                height: 60px;
+                border-radius: 12px;
+            }
+            .portfolio-title, .portfolio-cat {
+                text-align: left;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="card-container">
+    <div class="content-wrapper">
+        
         <!-- Header -->
         <header class="header">
-            <div class="avatar-wrapper">
+            <div class="avatar-container">
                 <!-- Ganti src dengan link foto kamu -->
                 <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Aisha Putri" class="avatar">
-                <div class="status-badge"></div>
             </div>
             <h1 class="name">Aisha Putri</h1>
-            <div class="role">Product Designer</div>
+            <div class="role">Senior Product Designer</div>
         </header>
 
-        <!-- Link Links -->
-        <section class="links-section">
-            <span class="section-label">Connect</span>
-            
+        <!-- Link Utama -->
+        <section class="links-grid">
             <a href="https://linkedin.com/in/aishaputri" class="link-btn" target="_blank">
-                <i class="ph ph-linkedin-logo link-icon"></i>
-                <span class="link-text">LinkedIn Profile</span>
+                <i class="ph ph-linkedin-logo"></i>
+                <span>LinkedIn Profile</span>
             </a>
-
+            
             <a href="mailto:aisha.putri@email.com" class="link-btn" target="_blank">
-                <i class="ph ph-envelope-simple link-icon"></i>
-                <span class="link-text">Email Me</span>
+                <i class="ph ph-envelope-simple"></i>
+                <span>Email Me</span>
             </a>
-
+            
             <a href="https://wa.me/628123456789" class="link-btn" target="_blank">
-                <i class="ph ph-whatsapp-logo link-icon"></i>
-                <span class="link-text">WhatsApp</span>
+                <i class="ph ph-whatsapp-logo"></i>
+                <span>WhatsApp Chat</span>
             </a>
         </section>
 
-        <!-- Portfolio Section -->
+        <!-- Portfolio (Icon Grid) -->
         <section class="portfolio-section">
-            <span class="section-label">Featured Work</span>
+            <div class="section-title">Selected Works</div>
             
             <div class="portfolio-grid">
                 <!-- Porto 1 -->
                 <a href="#" class="portfolio-item" target="_blank">
-                    <!-- Ganti src dengan gambar porto 1 -->
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Project 1">
-                    <div class="portfolio-overlay">
-                        <div>
-                            <div class="portfolio-title">Fintech App Redesign</div>
-                            <div class="portfolio-cat">UI/UX Case Study</div>
-                        </div>
+                    <div class="portfolio-icon-box">
+                        <i class="ph ph-device-mobile portfolio-icon"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <div class="portfolio-title">Fintech App</div>
+                        <div class="portfolio-cat">UX Case Study</div>
                     </div>
                 </a>
 
                 <!-- Porto 2 -->
                 <a href="#" class="portfolio-item" target="_blank">
-                    <!-- Ganti src dengan gambar porto 2 -->
-                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Project 2">
-                    <div class="portfolio-overlay">
-                        <div>
-                            <div class="portfolio-title">E-Commerce Dashboard</div>
-                            <div class="portfolio-cat">Web Design</div>
-                        </div>
+                    <div class="portfolio-icon-box">
+                        <i class="ph ph-laptop portfolio-icon"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <div class="portfolio-title">E-Commerce Web</div>
+                        <div class="portfolio-cat">UI Design</div>
                     </div>
                 </a>
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- Footer Socials -->
         <footer class="footer">
-            <div class="footer-text">© 2026 Aisha Putri. All rights reserved.</div>
-            <div class="social-icons">
-                <a href="#" class="social-link"><i class="ph ph-instagram-logo"></i></a>
-                <a href="#" class="social-link"><i class="ph ph-dribbble-logo"></i></a>
-                <a href="#" class="social-link"><i class="ph ph-behance-logo"></i></a>
+            <div class="social-grid">
+                <a href="#" class="social-btn" target="_blank">
+                    <i class="ph ph-instagram-logo"></i>
+                </a>
+                <a href="#" class="social-btn" target="_blank">
+                    <i class="ph ph-behance-logo"></i>
+                </a>
+                <a href="#" class="social-btn" target="_blank">
+                    <i class="ph ph-dribbble-logo"></i>
+                </a>
             </div>
+            <div class="footer-text">© 2026 Aisha Putri. All Rights Reserved.</div>
         </footer>
+
     </div>
 
 </body>
