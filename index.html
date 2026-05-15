@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Profesional - Aisha Putri</title>
     
-    <!-- Import Phosphor Icons -->
+    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
-    <!-- Google Fonts: Inter untuk kesan modern & bersih -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Plus Jakarta Sans (Modern) & Merriweather (Formal/Elegan) -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #0f172a;       /* Slate 900 - Teks utama */
-            --secondary: #64748b;     /* Slate 500 - Teks sekunder */
-            --accent: #0d9488;        /* Teal 600 - Aksen warna */
-            --bg: #f8fafc;            /* Slate 50 - Background body */
-            --card: #ffffff;          /* Putih - Background kartu */
+            /* Palette Warna: Royal Blue & Gold atas Cream */
+            --primary: #1e293b;       /* Slate 800 - Teks utama (Sangat gelap tapi bukan hitam pekat) */
+            --secondary: #475569;     /* Slate 600 - Teks deskripsi */
+            --accent: #d97706;        /* Amber 600 (Gold/Orange) - Aksen elegan */
+            --accent-hover: #b45309;  /* Amber 700 - Hover state */
+            --bg-body: #fdfbf7;       /* Cream Kuning Sangat Tipis (Warm White) */
+            --bg-card: #ffffff;       /* Putih bersih */
             --border: #e2e8f0;        /* Border halus */
+            --shadow: 0 20px 40px -10px rgba(30, 41, 59, 0.08); /* Bayangan lembut */
         }
 
         * {
@@ -28,30 +31,34 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
+            font-family: 'Plus Jakarta Sans', sans-serif; /* Font modern & bersih */
+            background-color: var(--bg-body);
             color: var(--primary);
-            line-height: 1.6;
+            line-height: 1.7;
             padding: 40px 20px;
             font-size: 14px;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
-            background: var(--card);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-radius: 12px;
+            background: var(--bg-card);
+            box-shadow: var(--shadow);
+            border-radius: 16px; /* Lebih bulat, tidak kaku */
             overflow: hidden;
             display: grid;
-            grid-template-columns: 300px 1fr; /* Kiri 300px, Kanan sisa */
+            grid-template-columns: 320px 1fr;
+            position: relative;
         }
 
         /* --- KOLOM KIRI (SIDEBAR) --- */
         .sidebar {
-            background-color: #f1f5f9; /* Sedikit beda warna background */
-            padding: 40px 30px;
+            background-color: #f8fafc; /* Sedikit lebih gelap dari putih */
+            padding: 50px 30px;
             border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
         }
 
         .profile-header {
@@ -59,33 +66,48 @@
             margin-bottom: 40px;
         }
 
+        .avatar-wrapper {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 25px;
+        }
+
         .avatar-placeholder {
-            width: 100px;
-            height: 100px;
-            background: var(--accent);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), #334155);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
-            font-weight: bold;
-            margin: 0 auto 20px;
+            font-size: 36px;
+            font-weight: 700;
+            box-shadow: 0 10px 20px rgba(30, 41, 59, 0.2);
+            border: 3px solid white;
         }
 
         .sidebar h1 {
-            font-size: 1.5rem;
+            font-family: 'Merriweather', serif; /* Font serif untuk nama agar elegan */
+            font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: 5px;
             color: var(--primary);
+            margin-bottom: 8px;
+            line-height: 1.2;
         }
 
         .sidebar .role {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--accent);
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: rgba(217, 119, 6, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
         }
 
         .contact-list {
@@ -94,39 +116,47 @@
         }
 
         .contact-list li {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--secondary);
+            transition: transform 0.2s ease;
+        }
+
+        .contact-list li:hover {
+            transform: translateX(5px);
+            color: var(--primary);
         }
 
         .contact-list i {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--accent);
-            margin-right: 12px;
-            min-width: 20px;
+            margin-right: 15px;
+            min-width: 24px;
         }
 
         .contact-list a {
             color: var(--secondary);
             text-decoration: none;
+            font-weight: 500;
             transition: color 0.2s;
         }
 
         .contact-list a:hover {
             color: var(--accent);
+            text-decoration: underline;
         }
 
         .section-title-sm {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 20px;
             border-bottom: 2px solid var(--accent);
-            padding-bottom: 5px;
+            padding-bottom: 8px;
             display: inline-block;
         }
 
@@ -136,79 +166,102 @@
 
         .skills-list li {
             background: white;
-            padding: 8px 12px;
-            margin-bottom: 10px;
-            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+            border-radius: 8px;
             font-size: 0.85rem;
             font-weight: 500;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
             display: flex;
             align-items: center;
+            border-left: 3px solid var(--accent);
+            transition: all 0.2s;
+        }
+
+        .skills-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
         }
 
         .skills-list i {
-            color: var(--accent);
-            margin-right: 10px;
-            font-size: 1rem;
+            color: var(--primary);
+            margin-right: 12px;
+            font-size: 1.1rem;
         }
 
         /* --- KOLOM KANAN (MAIN CONTENT) --- */
         .main-content {
-            padding: 40px;
+            padding: 50px 40px;
         }
 
         .intro-text {
             margin-bottom: 40px;
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--secondary);
+            font-family: 'Merriweather', serif; /* Sedikit serif untuk paragraf agar enak dibaca */
+            font-style: italic;
+            line-height: 1.8;
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent);
         }
 
         .main-section {
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
 
         .section-title-lg {
-            font-size: 1.2rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            letter-spacing: -0.5px;
         }
 
         .section-title-lg i {
             color: var(--accent);
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            background: rgba(217, 119, 6, 0.1);
+            padding: 8px;
+            border-radius: 8px;
         }
 
+        /* Timeline Style yang lebih halus */
         .experience-item {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             position: relative;
-            padding-left: 20px;
-            border-left: 2px solid var(--border);
+            padding-left: 25px;
         }
 
         .experience-item::before {
             content: '';
             position: absolute;
-            left: -6px;
-            top: 0;
-            width: 10px;
-            height: 10px;
-            background: var(--accent);
-            border-radius: 50%;
+            left: 0;
+            top: 5px;
+            bottom: -25px;
+            width: 2px;
+            background: #e2e8f0;
+        }
+
+        .experience-item:last-child::before {
+            display: none;
         }
 
         .exp-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
+            align-items: flex-start;
             margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .exp-title {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--primary);
         }
@@ -222,16 +275,18 @@
         .exp-date {
             font-size: 0.8rem;
             color: var(--accent);
-            font-weight: 600;
-            background: rgba(13, 148, 136, 0.1);
-            padding: 4px 8px;
-            border-radius: 4px;
+            font-weight: 700;
+            background: rgba(217, 119, 6, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
         }
 
         .exp-desc {
             color: var(--secondary);
-            font-size: 0.9rem;
-            margin-top: 10px;
+            font-size: 0.95rem;
+            margin-top: 12px;
+            text-align: justify; /* Agar rata kiri kanan rapi */
         }
 
         .exp-desc ul {
@@ -240,23 +295,29 @@
         }
 
         .exp-desc li {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             position: relative;
-            padding-left: 15px;
+            padding-left: 20px;
+            line-height: 1.6;
         }
 
         .exp-desc li::before {
-            content: '•';
+            content: '›';
             color: var(--accent);
             position: absolute;
             left: 0;
+            font-size: 1.4rem;
+            line-height: 1.2;
             font-weight: bold;
+            top: -2px;
         }
 
         /* Responsive Mobile */
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: 1fr;
+                border-radius: 0;
+                box-shadow: none;
             }
             .sidebar {
                 border-right: none;
@@ -266,6 +327,14 @@
             .main-content {
                 padding: 30px 20px;
             }
+            .avatar-placeholder {
+                width: 90px;
+                height: 90px;
+                font-size: 28px;
+            }
+            .sidebar h1 {
+                font-size: 1.4rem;
+            }
         }
 
         /* Print Optimized */
@@ -273,11 +342,13 @@
             body {
                 background: white;
                 padding: 0;
+                color: black;
             }
             .container {
                 box-shadow: none;
                 max-width: 100%;
                 width: 100%;
+                border-radius: 0;
             }
             .sidebar {
                 background: #f8fafc;
@@ -285,7 +356,16 @@
             }
             a {
                 text-decoration: none;
-                color: #333;
+                color: black;
+            }
+            .exp-date {
+                background: none;
+                border: 1px solid #ddd;
+                color: black;
+            }
+            .skills-list li {
+                border-left: 2px solid black;
+                box-shadow: none;
             }
         }
     </style>
@@ -296,36 +376,39 @@
         <!-- Sidebar Kiri -->
         <aside class="sidebar">
             <div class="profile-header">
-                <div class="avatar-placeholder">AP</div>
+                <div class="avatar-wrapper">
+                    <div class="avatar-placeholder">AP</div>
+                </div>
                 <h1>Aisha Putri</h1>
-                <p class="role">Product Designer</p>
+                <p class="role">Senior Product Designer</p>
             </div>
 
             <ul class="contact-list">
                 <li><i class="ph ph-envelope-simple"></i> <a href="mailto:aisha.putri@email.com">aisha.putri@email.com</a></li>
-                <li><i class="ph ph-phone"></i> <a href="tel:+628123456789">+62 812 3456 7890</a></li>
+                <li><i class="ph ph-whatsapp-logo"></i> <a href="tel:+628123456789">+62 812 3456 7890</a></li>
                 <li><i class="ph ph-map-pin"></i> <span>Jakarta Selatan, ID</span></li>
                 <li><i class="ph ph-linkedin-logo"></i> <a href="#">linkedin.com/in/aishaputri</a></li>
                 <li><i class="ph ph-globe"></i> <a href="#">aishaputri.design</a></li>
             </ul>
 
             <div class="sidebar-section">
-                <h3 class="section-title-sm">Keahlian</h3>
+                <h3 class="section-title-sm">Core Skills</h3>
                 <ul class="skills-list">
-                    <li><i class="ph ph-paint-brush-broad"></i> UI/UX Design</li>
+                    <li><i class="ph ph-paint-brush-broad"></i> UI/UX Strategy</li>
                     <li><i class="ph ph-device-mobile"></i> Figma & Prototyping</li>
-                    <li><i class="ph ph-code"></i> HTML/CSS Basics</li>
+                    <li><i class="ph ph-code"></i> HTML/CSS/JS Basics</li>
                     <li><i class="ph ph-users"></i> User Research</li>
-                    <li><i class="ph ph-chat-centered-text"></i> Agile Methodology</li>
-                    <li><i class="ph ph-translate"></i> Bahasa Inggris (Fluent)</li>
+                    <li><i class="ph ph-chart-line-up"></i> Data Analytics</li>
+                    <li><i class="ph ph-translate"></i> English (IELTS 8.0)</li>
                 </ul>
             </div>
 
-            <div class="sidebar-section" style="margin-top: 30px;">
+            <div class="sidebar-section" style="margin-top: 35px;">
                 <h3 class="section-title-sm">Sertifikasi</h3>
                 <ul class="skills-list">
-                    <li><i class="ph ph-certificate"></i> Google UX Design</li>
-                    <li><i class="ph ph-certificate"></i> Product Management 101</li>
+                    <li><i class="ph ph-certificate"></i> Google UX Design Pro</li>
+                    <li><i class="ph ph-award"></i> Product Management 101</li>
+                    <li><i class="ph ph-medal"></i> Agile Scrum Master</li>
                 </ul>
             </div>
         </aside>
@@ -334,15 +417,15 @@
         <main class="main-content">
             <!-- Profil Singkat -->
             <section>
-                <h2 class="section-title-lg"><i class="ph ph-user"></i> Tentang Saya</h2>
+                <h2 class="section-title-lg"><i class="ph ph-user-circle"></i> Tentang Saya</h2>
                 <p class="intro-text">
-                    Product Designer yang bersemangat dengan pengalaman 4+ tahun menciptakan pengalaman digital yang intuitif dan user-friendly. Spesialis dalam mengubah kompleksitas menjadi desain yang sederhana. Terbukti meningkatkan retensi pengguna hingga 35% melalui iterasi desain berbasis data.
+                    Product Designer yang berdedikasi dengan pengalaman 5+ tahun dalam menciptakan solusi digital yang berpusat pada pengguna. Spesialis dalam menjembatani kesenjangan antara kebutuhan bisnis dan ekspektasi pengguna melalui desain yang elegan dan fungsional. Terbukti meningkatkan retensi pengguna hingga 40% melalui strategi desain berbasis data yang terukur.
                 </p>
             </section>
 
             <!-- Pengalaman Kerja -->
             <section class="main-section">
-                <h2 class="section-title-lg"><i class="ph ph-briefcase"></i> Pengalaman Kerja</h2>
+                <h2 class="section-title-lg"><i class="ph ph-briefcase"></i> Pengalaman Profesional</h2>
 
                 <div class="experience-item">
                     <div class="exp-header">
@@ -350,14 +433,15 @@
                             <div class="exp-title">Senior Product Designer</div>
                             <div class="exp-company">TechFlow Solutions | Jakarta</div>
                         </div>
-                        <div class="exp-date">2023 - Sekarang</div>
+                                                    <div class="exp-date">2023 - Sekarang</div>
+                        </div>
                     </div>
                     <div class="exp-desc">
                         <ul>
-                            <li>Memimpin desain ulang total aplikasi mobile yang meningkatkan kepuasan pengguna (CSAT) dari 3.8 menjadi 4.7.</li>
-                            <li>Bekerja sama dengan tim engineering dan product manager untuk meluncurkan fitur AI dalam waktu 3 bulan.</li>
-                            <li>Membangun dan memelihara Design System yang digunakan oleh 5 produk berbeda.</li>
-                            <li>Memimpin sesi usability testing mingguan untuk validasi hipotesis desain.</li>
+                            <li>Memimpin strategi desain ulang aplikasi mobile yang berhasil meningkatkan skor CSAT dari 3.8 menjadi 4.7 dalam 6 bulan.</li>
+                            <li>Berkolaborasi erat dengan tim Engineering dan Product Manager untuk meluncurkan fitur AI yang meningkatkan engagement pengguna sebesar 25%.</li>
+                            <li>Membangun dan memelihara *Design System* skala besar yang digunakan oleh 5 produk berbeda, mempercepat proses development hingga 30%.</li>
+                            <li>Memimpin sesi *usability testing* mingguan dan *design critique* untuk memastikan kualitas produk yang konsisten.</li>
                         </ul>
                     </div>
                 </div>
@@ -372,9 +456,9 @@
                     </div>
                     <div class="exp-desc">
                         <ul>
-                            <li>Mendesain antarmuka web dan mobile untuk lebih dari 15 klien dari berbagai industri (Fintech, E-commerce, Edtech).</li>
-                            <li>Berkolaborasi dengan copywriter untuk membuat microcopy yang meningkatkan konversi landing page.</li>
-                            <li>Melakukan audit UX pada produk klien yang ada dan merekomendasikan perbaikan strategis.</li>
+                            <li>Mendesain antarmuka web dan mobile untuk 15+ klien dari berbagai sektor (Fintech, E-commerce, Edtech) dengan standar internasional.</li>
+                            <li>Berkolaborasi dengan tim copywriter untuk menyusun *microcopy* yang strategis, meningkatkan konversi landing page sebesar 18%.</li>
+                            <li>Melakukan audit UX komprehensif pada produk klien yang ada dan merekomendasikan perbaikan strategis berbasis data.</li>
                         </ul>
                     </div>
                 </div>
@@ -389,9 +473,9 @@
                     </div>
                     <div class="exp-desc">
                         <ul>
-                            <li>Membantu tim senior dalam pembuatan wireframe dan mockup high-fidelity.</li>
-                            <li>Mengelola aset desain dan memastikan konsistensi branding di semua platform.</li>
-                            <li>Melakukan riset kompetitor untuk mengidentifikasi peluang fitur baru.</li>
+                            <li>Mendukung tim senior dalam pembuatan wireframe, mockup high-fidelity, dan aset interaktif.</li>
+                            <li>Mengelola perpustakaan aset desain dan memastikan konsistensi identitas visual di semua saluran komunikasi.</li>
+                            <li>Melakukan riset kompetitor mendalam untuk mengidentifikasi peluang fitur baru dan tren pasar.</li>
                         </ul>
                     </div>
                 </div>
@@ -401,7 +485,7 @@
             <section class="main-section">
                 <h2 class="section-title-lg"><i class="ph ph-graduation-cap"></i> Pendidikan</h2>
                 
-                <div class="experience-item" style="border-left: none; padding-left: 0; margin-bottom: 20px;">
+                <div class="experience-item">
                     <div class="exp-header">
                         <div>
                             <div class="exp-title">Sarjana Desain Komunikasi Visual</div>
@@ -410,38 +494,36 @@
                         <div class="exp-date">2015 - 2019</div>
                     </div>
                     <div class="exp-desc">
-                        <p>Lulusan dengan predikat Cum Laude. Aktif dalam organisasi mahasiswa desain dan pemenang lomba desain nasional 2018.</p>
+                        <p>Lulusan dengan predikat <strong>Cum Laude</strong>. Aktif memimpin organisasi mahasiswa desain dan pemenang Juara 1 Lomba Desain Nasional 2018.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Proyek Unggulan (Opsional) -->
+            <!-- Proyek Unggulan -->
             <section class="main-section">
                 <h2 class="section-title-lg"><i class="ph ph-star"></i> Proyek Unggulan</h2>
-                <div class="experience-item" style="border-left: none; padding-left: 0;">
+                <div class="experience-item">
                     <div class="exp-header">
                         <div class="exp-title">Re-Design Aplikasi E-Commerce Lokal</div>
                     </div>
                     <div class="exp-desc">
-                        <p>Proyek individu untuk merancang ulang alur checkout yang lebih sederhana. Hasil studi kasus ini dipublikasikan</p>
-            <!-- Proyek Unggulan (Lanjutan) -->
-            <div class="exp-desc">
-                <p>Studi kasus mandiri yang berfokus pada penyederhanaan alur checkout. Hasil penelitian menunjukkan potensi penurunan cart abandonment sebesar 20% jika diterapkan.</p>
-            </div>
-        </div>
-    </section>
+                        <p><strong>Tantangan:</strong> Mengurangi tingkat pembatalan pesanan (*cart abandonment*) yang tinggi di langkah checkout.</p>
+                        <p><strong>Solusi:</strong> Merancang ulang alur checkout menjadi 3 langkah sederhana dengan validasi real-time.</p>
+                        <p><strong>Hasil:</strong> Studi kasus ini memproyeksikan penurunan pembatalan sebesar 20% jika diterapkan. Publikasi artikel di *Medium Design* dengan 5k+ pembaca.</p>
+                    </div>
+                </div>
+            </section>
 
-    <!-- Referensi (Opsional) -->
-    <section class="main-section">
-        <h2 class="section-title-lg"><i class="ph ph-users-three"></i> Referensi</h2>
-        <p style="color: var(--secondary); font-size: 0.9rem;">
-            Tersedia atas permintaan.
-        </p>
-    </section>
+            <!-- Referensi -->
+            <section class="main-section">
+                <h2 class="section-title-lg"><i class="ph ph-users-three"></i> Referensi</h2>
+                <p style="color: var(--secondary); font-size: 0.95rem; font-style: italic;">
+                    Tersedia atas permintaan. Silakan hubungi untuk referensi lebih lanjut.
+                </p>
+            </section>
 
-</main>
-
-</div>
+        </main>
+    </div>
 
 </body>
 </html>
