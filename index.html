@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ruang | Jurnal Minimal</title>
-
-    <!-- Geist Sans: ringan, bersih, modern -->
     <link rel="preconnect" href="https://api.fontsource.org" />
     <link href="https://api.fontsource.org/v2/fonts/geist-sans/latin-300-normal.css" rel="stylesheet" />
     <link href="https://api.fontsource.org/v2/fonts/geist-sans/latin-400-normal.css" rel="stylesheet" />
-
     <style>
         :root {
             --paper: #fafaf7;
@@ -54,13 +51,14 @@
             transition: background var(--ease), color var(--ease);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
-        /* Container bernafas */
         .container {
             max-width: 1120px;
             margin: 0 auto;
             padding: 0 2.5rem;
+            width: 100%;
         }
 
         @media (max-width: 640px) {
@@ -69,7 +67,7 @@
             }
         }
 
-        /* ── Navigasi ──────────────────────── */
+        /* Navigasi */
         .nav {
             position: fixed;
             inset: 0 0 auto 0;
@@ -127,7 +125,6 @@
             border-bottom-color: var(--ink);
         }
 
-        /* Theme toggle */
         .theme-btn {
             background: none;
             border: 1px solid var(--line);
@@ -149,7 +146,6 @@
             border-color: var(--ink-light);
         }
 
-        /* Hamburger */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -201,7 +197,7 @@
             }
         }
 
-        /* ── Hero ──────────────────────────── */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -211,6 +207,7 @@
 
         .hero-content {
             max-width: 680px;
+            width: 100%;
         }
 
         .hero-eyebrow {
@@ -262,7 +259,6 @@
             color: var(--paper);
         }
 
-        /* ── Section ───────────────────────── */
         section {
             padding: 7rem 0;
         }
@@ -286,7 +282,6 @@
             letter-spacing: -0.02em;
         }
 
-        /* Grid 2 kolom */
         .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -300,7 +295,6 @@
             }
         }
 
-        /* Card */
         .card {
             display: block;
             text-decoration: none;
@@ -369,18 +363,47 @@
             line-height: 1.6;
         }
 
-        /* ── Animasi ───────────────────────── */
-        .fade {
-            opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+        /* Tentang */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
-        .fade.in {
-            opacity: 1;
-            transform: translateY(0);
+        @media (max-width: 640px) {
+            .about-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
         }
 
-        /* ── Footer ────────────────────────── */
+        /* Kontak */
+        .contact-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            max-width: 100%;
+            width: 100%;
+            margin: 0 auto;
+            justify-content: center;
+        }
+        .contact-form input {
+            flex: 1 1 240px;
+            padding: 0.9rem 1.4rem;
+            border: 1px solid var(--line);
+            background: var(--white);
+            color: var(--ink);
+            font-family: var(--font);
+            font-size: 0.9rem;
+            border-radius: 100px;
+            outline: none;
+            max-width: 100%;
+        }
+        .contact-form .btn {
+            flex: 0 0 auto;
+        }
+
+        /* Footer */
         footer {
             padding: 2.5rem 0;
             font-size: 0.8rem;
@@ -399,10 +422,26 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Animasi */
+        .fade {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cegah overflow */
+        img, svg, video, canvas, audio, iframe, embed, object {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
-    <!-- Navigasi -->
     <nav class="nav" id="nav">
         <div class="container">
             <a href="#" class="nav-logo">Ruang<span>.</span></a>
@@ -419,7 +458,6 @@
         </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content fade">
@@ -431,7 +469,6 @@
         </div>
     </section>
 
-    <!-- Karya: Card 1 & 2 -->
     <section id="karya">
         <div class="container">
             <div class="section-head fade">
@@ -439,7 +476,6 @@
                 <h2>Proyek & tulisan</h2>
             </div>
             <div class="grid">
-                <!-- Card 1 -->
                 <a href="#" class="card fade">
                     <div class="card-visual"><div class="card-visual-inner"></div></div>
                     <div class="card-body">
@@ -448,7 +484,6 @@
                         <p>Bagaimana bukaan kecil menciptakan pengalaman ruang yang tak terduga.</p>
                     </div>
                 </a>
-                <!-- Card 2 -->
                 <a href="#" class="card fade">
                     <div class="card-visual"><div class="card-visual-inner"></div></div>
                     <div class="card-body">
@@ -457,8 +492,6 @@
                         <p>Desain yang melebur ke dalam keseharian tanpa kehilangan karakternya.</p>
                     </div>
                 </a>
-
-                <!-- Card 3 -->
                 <a href="#" class="card fade">
                     <div class="card-visual"><div class="card-visual-inner"></div></div>
                     <div class="card-body">
@@ -467,7 +500,6 @@
                         <p>Ketika huruf memiliki ruang untuk berdiri sendiri, pesan menjadi lebih jelas.</p>
                     </div>
                 </a>
-                <!-- Card 4 -->
                 <a href="#" class="card fade">
                     <div class="card-visual"><div class="card-visual-inner"></div></div>
                     <div class="card-body">
@@ -480,9 +512,8 @@
         </div>
     </section>
 
-    <!-- Tentang -->
     <section id="tentang">
-        <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;">
+        <div class="container about-grid">
             <div class="fade">
                 <div class="section-head" style="margin-bottom:1.5rem;">
                     <div class="tag">Pegangan</div>
@@ -505,7 +536,6 @@
         </div>
     </section>
 
-    <!-- Kontak -->
     <section id="kontak">
         <div class="container" style="max-width:600px; text-align:center;">
             <div class="section-head fade">
@@ -515,15 +545,13 @@
             <p class="fade" style="color:var(--ink-light); margin-bottom:2.4rem;">
                 Tidak ada spam. Hanya sepucuk tulisan pendek tentang desain dan ketenangan, setiap akhir pekan.
             </p>
-            <form class="fade" style="display:flex; gap:0.6rem; max-width:420px; margin:0 auto;" onsubmit="event.preventDefault(); alert('Terima kasih telah bergabung.');">
-                <input type="email" placeholder="Alamat email" required
-                    style="flex:1; padding:0.9rem 1.4rem; border:1px solid var(--line); background:var(--white); color:var(--ink); font-family:var(--font); font-size:0.9rem; border-radius:100px; outline:none;">
+            <form class="contact-form fade" onsubmit="event.preventDefault(); alert('Terima kasih telah bergabung.');">
+                <input type="email" placeholder="Alamat email" required>
                 <button type="submit" class="btn">Langganan</button>
             </form>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container" style="display:flex; justify-content:space-between; width:100%;">
             <span>&copy; 2025 Ruang. Semua hak dilindungi kesederhanaan.</span>
@@ -531,7 +559,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         (function () {
             const nav = document.getElementById('nav');
@@ -540,16 +567,27 @@
             const themeToggle = document.getElementById('themeToggle');
             const body = document.body;
 
-            // Dark mode
-            if (localStorage.getItem('theme') === 'dark') {
+            // Dark mode toggle
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'dark') {
                 body.setAttribute('data-theme', 'dark');
                 themeToggle.textContent = '☾';
+            } else {
+                body.removeAttribute('data-theme');
+                themeToggle.textContent = '☀';
             }
+
             themeToggle.addEventListener('click', () => {
                 const isDark = body.hasAttribute('data-theme');
-                body.toggleAttribute('data-theme');
-                localStorage.setItem('theme', isDark ? 'light' : 'dark');
-                themeToggle.textContent = isDark ? '☀' : '☾';
+                if (isDark) {
+                    body.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'light');
+                    themeToggle.textContent = '☀';
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    themeToggle.textContent = '☾';
+                }
             });
 
             // Navbar scroll
@@ -569,9 +607,13 @@
                 });
             });
 
-            // Fade-in observer
+            // Fade-in animation
             const observer = new IntersectionObserver(entries => {
-                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in');
+                    }
+                });
             }, { threshold: 0.15 });
             document.querySelectorAll('.fade').forEach(el => observer.observe(el));
         })();
