@@ -1,174 +1,207 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MINIMALISSIMO — Majalah Desain Minimalis</title>
-    
-    <!-- Geist Sans Font (Weight 300 & 400 untuk tampilan ringan) -->
-    <link href="https://api.fontsource.org/v2/fonts/geist-sans/latin-400-normal.css" rel="stylesheet">
-    <link href="https://api.fontsource.org/v2/fonts/geist-sans/latin-300-normal.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ruang | Jurnal Minimal</title>
+
+    <!-- Geist Sans: ringan, bersih, modern -->
+    <link rel="preconnect" href="https://api.fontsource.org" />
+    <link href="https://api.fontsource.org/v2/fonts/geist-sans/latin-300-normal.css" rel="stylesheet" />
+    <link href="https://api.fontsource.org/v2/fonts/geist-sans/latin-400-normal.css" rel="stylesheet" />
 
     <style>
         :root {
-            --bg: #fafaf8;
-            --surface: #f4f4f0;
-            --text: #1a1a1a;
-            --text-muted: #6b6b6b;
-            --border: #e8e8e4;
-            --accent: #2c2c2c;
-            --white: #ffffff;
-            --transition: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-            --font-sans: 'Geist Sans', 'Inter', system-ui, -apple-system, sans-serif;
-            --shadow: 0 2px 8px rgba(0,0,0,0.04);
+            --paper: #fafaf7;
+            --ink: #1a1a1a;
+            --ink-light: #5c5c5c;
+            --line: #e0ded8;
+            --surface: #f4f3ee;
+            --white: #fff;
+            --ease: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --font: 'Geist Sans', system-ui, -apple-system, sans-serif;
         }
 
         [data-theme="dark"] {
-            --bg: #1a1a1a;
-            --surface: #222222;
-            --text: #e8e8e4;
-            --text-muted: #9a9a96;
-            --border: #2e2e2e;
-            --accent: #d4d4d0;
-            --white: #1e1e1e;
-            --shadow: 0 2px 8px rgba(0,0,0,0.2);
+            --paper: #171716;
+            --ink: #e8e6e0;
+            --ink-light: #9e9c96;
+            --line: #2a2a28;
+            --surface: #1f1f1d;
+            --white: #1c1c1a;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
 
         body {
-            font-family: var(--font-sans);
-            font-weight: 300; /* Default ringan */
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
+            font-family: var(--font);
+            font-weight: 300;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.65;
             letter-spacing: -0.01em;
-            transition: background-color var(--transition), color var(--transition);
+            transition: background var(--ease), color var(--ease);
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Container bernafas */
         .container {
-            max-width: 1200px;
+            max-width: 1120px;
             margin: 0 auto;
-            padding: 0 3rem; /* Padding lebih besar untuk spasi hidup */
+            padding: 0 2.5rem;
         }
 
-        @media (max-width: 768px) {
-            .container { padding: 0 1.5rem; }
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 1.4rem;
+            }
         }
 
-        /* ─── NAVBAR ──────────────────────────── */
-        .navbar {
+        /* ── Navigasi ──────────────────────── */
+        .nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            inset: 0 0 auto 0;
             z-index: 100;
-            padding: 1.8rem 0;
-            background: transparent;
-            transition: all var(--transition);
+            padding: 1.6rem 0;
+            transition: all var(--ease);
         }
 
-        .navbar.scrolled {
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
-            padding: 1.2rem 0;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        .nav.scrolled {
+            background: var(--paper);
+            border-bottom: 1px solid var(--line);
+            padding: 1rem 0;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
         }
 
-        .navbar .container {
+        .nav .container {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .nav-logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 400;
             letter-spacing: -0.03em;
             text-decoration: none;
-            color: var(--text);
+            color: var(--ink);
         }
 
         .nav-logo span {
             font-weight: 300;
-            color: var(--text-muted);
-            font-style: italic;
+            color: var(--ink-light);
         }
 
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 3rem;
+            gap: 2.8rem;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-muted);
+            color: var(--ink-light);
             font-size: 0.9rem;
             font-weight: 400;
-            letter-spacing: 0.02em;
-            transition: color var(--transition);
+            letter-spacing: 0.01em;
+            transition: color var(--ease);
+            padding-bottom: 2px;
+            border-bottom: 1px solid transparent;
         }
 
-        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover {
+            color: var(--ink);
+            border-bottom-color: var(--ink);
+        }
 
-        .theme-toggle {
+        /* Theme toggle */
+        .theme-btn {
             background: none;
-            border: 1px solid var(--border);
-            color: var(--text);
-            cursor: pointer;
-            width: 38px;
-            height: 38px;
+            border: 1px solid var(--line);
+            color: var(--ink);
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             font-size: 1rem;
-            transition: all var(--transition);
-            margin-left: 0.5rem;
+            cursor: pointer;
+            transition: all var(--ease);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 0.4rem;
         }
 
-        .theme-toggle:hover {
+        .theme-btn:hover {
             background: var(--surface);
-            border-color: var(--text-muted);
+            border-color: var(--ink-light);
         }
 
-        /* Mobile */
-        .hamburger { display: none; }
-        @media (max-width: 768px) {
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            z-index: 101;
+        }
+        .hamburger span {
+            width: 22px;
+            height: 1.5px;
+            background: var(--ink);
+            transition: all var(--ease);
+        }
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -4px);
+        }
+
+        @media (max-width: 640px) {
             .hamburger {
                 display: flex;
-                flex-direction: column;
-                gap: 5px;
-                background: none;
-                border: none;
-                padding: 8px;
-                z-index: 101;
-            }
-            .hamburger span {
-                display: block;
-                width: 24px;
-                height: 2px;
-                background: var(--text);
-                transition: all var(--transition);
             }
             .nav-links {
                 position: fixed;
                 inset: 0;
-                background: var(--bg);
+                background: var(--paper);
                 flex-direction: column;
                 justify-content: center;
-                gap: 2.5rem;
+                align-items: center;
+                gap: 2.4rem;
                 transform: translateX(100%);
-                transition: transform var(--transition);
-                z-index: 100;
+                transition: transform var(--ease);
             }
-            .nav-links.open { transform: translateX(0); }
-            .nav-links a { font-size: 1.8rem; font-weight: 300; }
+            .nav-links.open {
+                transform: translateX(0);
+            }
+            .nav-links a {
+                font-size: 1.6rem;
+                font-weight: 300;
+                letter-spacing: -0.02em;
+            }
         }
 
-        /* ─── HERO ────────────────────────────── */
+        /* ── Hero ──────────────────────────── */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -176,354 +209,372 @@
             padding-top: 5rem;
         }
 
-        .hero-content { max-width: 720px; }
+        .hero-content {
+            max-width: 680px;
+        }
 
-        .hero-tag {
-            font-size: 0.75rem;
+        .hero-eyebrow {
+            font-size: 0.7rem;
             font-weight: 500;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: var(--ink-light);
             margin-bottom: 2rem;
-            display: block;
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 7vw, 5rem);
-            font-weight: 400; /* Tidak tebal */
-            line-height: 1.15;
+            font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+            font-weight: 300;
+            line-height: 1.1;
             letter-spacing: -0.04em;
-            margin-bottom: 2rem;
+            margin-bottom: 1.8rem;
         }
 
-        .hero h1 em {
+        .hero h1 i {
             font-style: italic;
-            font-weight: 300;
-            color: var(--text-muted);
+            color: var(--ink-light);
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 520px;
-            line-height: 1.8;
-            margin-bottom: 3rem;
+            font-size: 1.15rem;
+            color: var(--ink-light);
+            max-width: 480px;
+            line-height: 1.7;
+            margin-bottom: 2.8rem;
         }
 
         .btn {
             display: inline-block;
-            padding: 0.9rem 2.4rem;
-            border: 1.5px solid var(--text);
-            color: var(--text);
+            padding: 0.8rem 2.2rem;
+            border: 1.5px solid var(--ink);
+            color: var(--ink);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 400;
             letter-spacing: 0.03em;
             border-radius: 100px;
-            transition: all var(--transition);
-            margin-right: 1rem;
+            transition: all var(--ease);
+            cursor: pointer;
         }
 
         .btn:hover {
-            background: var(--text);
-            color: var(--bg);
+            background: var(--ink);
+            color: var(--paper);
         }
 
-        /* ─── SECTION ─────────────────────────── */
+        /* ── Section ───────────────────────── */
         section {
-            padding: 8rem 0;
-            border-bottom: 1px solid var(--border);
+            padding: 7rem 0;
         }
 
-        .section-header {
+        .section-head {
             margin-bottom: 4rem;
         }
 
-        .section-header .label {
+        .section-head .tag {
             font-size: 0.7rem;
             font-weight: 500;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 0.8rem;
+            color: var(--ink-light);
+            margin-bottom: 0.6rem;
         }
 
-        .section-header h2 {
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            font-weight: 400; /* Tidak tebal */
-            letter-spacing: -0.03em;
-            line-height: 1.3;
+        .section-head h2 {
+            font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
         }
 
-        .grid-2 {
+        /* Grid 2 kolom */
+        .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
+            gap: 2.5rem;
         }
 
-        @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
+        @media (max-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
+        /* Card */
         .card {
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            overflow: hidden;
-            background: var(--white);
-            transition: all var(--transition);
+            display: block;
             text-decoration: none;
             color: inherit;
-            display: block;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--white);
+            transition: all var(--ease);
         }
 
         .card:hover {
-            box-shadow: var(--shadow);
-            transform: translateY(-4px);
-            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            border-color: var(--ink-light);
         }
 
-        .card-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
-            border-bottom: 1px solid var(--border);
+        .card-visual {
+            height: 260px;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--ease);
+        }
+
+        .card-visual-inner {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--ink-light) 0%, transparent 70%);
+            opacity: 0.15;
+            transition: all var(--ease);
+        }
+
+        .card:hover .card-visual-inner {
+            opacity: 0.28;
+            width: 70px;
+            height: 70px;
         }
 
         .card-body {
-            padding: 2rem 2.2rem;
+            padding: 1.8rem 2rem;
         }
 
-        .card-category {
+        .card-body .category {
             font-size: 0.7rem;
             font-weight: 500;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 0.8rem;
+            color: var(--ink-light);
+            margin-bottom: 0.5rem;
         }
 
-        .card h3 {
-            font-size: 1.4rem;
+        .card-body h3 {
+            font-size: 1.3rem;
             font-weight: 400;
             letter-spacing: -0.02em;
-            margin-bottom: 0.8rem;
             line-height: 1.3;
+            margin-bottom: 0.5rem;
         }
 
-        .card p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
+        .card-body p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
             line-height: 1.6;
         }
 
-        .fade-in {
+        /* ── Animasi ───────────────────────── */
+        .fade {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(18px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
-        .fade-in.visible {
+        .fade.in {
             opacity: 1;
             transform: translateY(0);
         }
 
+        /* ── Footer ────────────────────────── */
         footer {
-            padding: 3rem 0;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            padding: 2.5rem 0;
+            font-size: 0.8rem;
+            color: var(--ink-light);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--line);
         }
-
-        footer a { color: var(--text); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
+        footer a {
+            color: var(--ink);
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar" id="navbar">
+    <!-- Navigasi -->
+    <nav class="nav" id="nav">
         <div class="container">
-            <a href="#" class="nav-logo">MINIMAL<span>issimo</span></a>
+            <a href="#" class="nav-logo">Ruang<span>.</span></a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Beranda</a></li>
-                <li><a href="#projects">Proyek</a></li>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#contact">Kontak</a></li>
+                <li><a href="#karya">Karya</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#kontak">Kontak</a></li>
             </ul>
-            <div style="display: flex; align-items: center;">
-                <button class="theme-toggle" id="themeToggle" aria-label="Ganti tema">☀️</button>
-                <button class="hamburger" id="hamburger">
-                    <span></span><span></span><span></span>
-                </button>
+            <div style="display:flex;align-items:center;">
+                <button class="theme-btn" id="themeToggle" aria-label="Ganti tema">☀</button>
+                <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
             </div>
         </div>
     </nav>
 
+    <!-- Hero -->
     <section class="hero" id="home">
         <div class="container">
-            <div class="hero-content fade-in">
-                <span class="hero-tag">Edisi terkini</span>
-                <h1>Desain itu <em>bernafas</em> dalam kesederhanaan.</h1>
-                <p>Kami menjelajahi estetika minimalis dalam arsitektur, produk, dan visual. Sebuah jurnal daring yang merayakan keheningan bentuk.</p>
-                <div>
-                    <a href="#projects" class="btn">Jelajahi karya</a>
-                </div>
+            <div class="hero-content fade">
+                <div class="hero-eyebrow">— Edisi 01</div>
+                <h1>Yang <i>sederhana</i> selalu bertahan.</h1>
+                <p>Kami merawat ruang kosong, merayakan garis-garis yang jujur, dan mendokumentasikan keindahan yang tidak berteriak.</p>
+                <a href="#karya" class="btn">Lihat karya</a>
             </div>
         </div>
     </section>
 
-    <section id="projects">
+    <!-- Karya: Card 1 & 2 -->
+    <section id="karya">
         <div class="container">
-            <div class="section-header fade-in">
-                <div class="label">Pilihan Editor</div>
-                <h2>Proyek & Artikel Terbaru</h2>
+            <div class="section-head fade">
+                <div class="tag">Pilihan</div>
+                <h2>Proyek & tulisan</h2>
             </div>
-            <div class="grid-2">
+            <div class="grid">
                 <!-- Card 1 -->
-                <a href="#" class="card fade-in">
-                    <img src="https://images.unsplash.com/photo-1755933504480-4d8c3e5f7f39?w=600&q=80" alt="Arsitektur minimalis" class="card-image" 
-                         onerror="this.style.background='#e0e0dc'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='2rem'; this.style.color='#aaa'; this.innerHTML='Arsitektur';">
+                <a href="#" class="card fade">
+                    <div class="card-visual"><div class="card-visual-inner"></div></div>
                     <div class="card-body">
-                        <div class="card-category">Arsitektur</div>
-                        <h3>Ruang Transparan di Tengah Hutan</h3>
-                        <p>Ketika kaca dan alam berdialog, tercipta ruang yang nyaris tanpa batas.</p>
+                        <div class="category">Arsitektur</div>
+                        <h3>Cahaya yang Memeluk Ruang</h3>
+                        <p>Bagaimana bukaan kecil menciptakan pengalaman ruang yang tak terduga.</p>
                     </div>
                 </a>
                 <!-- Card 2 -->
-                <a href="#" class="card fade-in">
-                    <img src="https://images.unsplash.com/photo-1755933504477-5f8a2c4b8f3a?w=600&q=80" alt="Desain produk minimalis" class="card-image"
-                         onerror="this.style.background='#e0e0dc'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='2rem'; this.style.color='#aaa'; this.innerHTML='Produk';">
+                <a href="#" class="card fade">
+                    <div class="card-visual"><div class="card-visual-inner"></div></div>
                     <div class="card-body">
-                        <div class="card-category">Produk</div>
-                        <h3>Kursi Lipat Generasi Ketiga</h3>
-                        <p>Fungsi dan bentuk bertemu dalam satu garis bersih. Studi tentang esensi duduk.</p>
+                        <div class="category">Produk</div>
+                        <h3>Objek yang Hampir Hilang</h3>
+                        <p>Desain yang melebur ke dalam keseharian tanpa kehilangan karakternya.</p>
                     </div>
                 </a>
+
                 <!-- Card 3 -->
-                <a href="#" class="card fade-in">
-                    <img src="https://images.unsplash.com/photo-1755933504491-9a6b3c7d5e2f?w=600&q=80" alt="Visual poster minimalis" class="card-image"
-                         onerror="this.style.background='#e0e0dc'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='2rem'; this.style.color='#aaa'; this.innerHTML='Visual';">
+                <a href="#" class="card fade">
+                    <div class="card-visual"><div class="card-visual-inner"></div></div>
                     <div class="card-body">
-                        <div class="card-category">Visual</div>
-                        <h3>Poster untuk Pameran Imaji</h3>
-                        <p>Komposisi tipografi yang berbicara tanpa suara. Warna hanya seperlunya.</p>
+                        <div class="category">Visual</div>
+                        <h3>Tipografi yang Bernafas</h3>
+                        <p>Ketika huruf memiliki ruang untuk berdiri sendiri, pesan menjadi lebih jelas.</p>
                     </div>
                 </a>
                 <!-- Card 4 -->
-                <a href="#" class="card fade-in">
-                    <img src="https://images.unsplash.com/photo-1755933504502-1e7f8d3b6a5c?w=600&q=80" alt="Majalah cetak minimalis" class="card-image"
-                         onerror="this.style.background='#e0e0dc'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='2rem'; this.style.color='#aaa'; this.innerHTML='Editorial';">
+                <a href="#" class="card fade">
+                    <div class="card-visual"><div class="card-visual-inner"></div></div>
                     <div class="card-body">
-                        <div class="card-category">Editorial</div>
-                        <h3>Majalah Cetak Volume 12</h3>
-                        <p>Eksplorasi kertas dan tinta dalam format yang tenang.</p>
+                        <div class="category">Editorial</div>
+                        <h3>Jurnal Cetak Volume 01</h3>
+                        <p>Kembali ke kertas. Kembali ke esensi membaca yang lambat dan dalam.</p>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="about">
-        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-            <div class="fade-in">
-                <div class="section-header">
-                    <div class="label">Filosofi</div>
-                    <h2>Kurang adalah <em>lebih</em>.</h2>
+    <!-- Tentang -->
+    <section id="tentang">
+        <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;">
+            <div class="fade">
+                <div class="section-head" style="margin-bottom:1.5rem;">
+                    <div class="tag">Pegangan</div>
+                    <h2>Tidak semua harus <i>ramai</i>.</h2>
                 </div>
-                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
-                    Minimalissimo adalah ruang kurasi bagi pencinta desain yang percaya bahwa keindahan sejati muncul dari pengurangan, bukan penambahan.
+                <p style="color:var(--ink-light); margin-bottom:1.5rem;">
+                    Ruang lahir dari keyakinan bahwa desain yang baik tidak perlu menjelaskan dirinya.
+                    Kami mengkurasi karya yang mengutamakan kejernihan, material yang jujur, dan komposisi yang tenang.
                 </p>
-                <p style="color: var(--text-muted); margin-bottom: 2rem;">
-                    Kami menampilkan karya yang mengutamakan kejernihan, materialitas, dan ketenangan visual.
+                <p style="color:var(--ink-light); margin-bottom:2rem;">
+                    Didirikan sebagai jurnal independen, kami menulis untuk mereka yang mencari jeda dari kebisingan visual.
                 </p>
-                <blockquote style="font-style: italic; font-size: 1.4rem; color: var(--text-muted); border-left: 2px solid var(--accent); padding-left: 1.5rem;">
-                    "Kesederhanaan adalah kecanggihan tertinggi."
-                    <br><small style="font-size: 0.9rem;">— Leonardo da Vinci</small>
+                <blockquote style="font-style:italic; font-size:1.3rem; color:var(--ink-light); border-left:2px solid var(--ink); padding-left:1.2rem;">
+                    "Kesederhanaan adalah bentuk kecanggihan tertinggi."
                 </blockquote>
             </div>
-            <div class="fade-in" style="text-align: right;">
-                <img src="https://images.unsplash.com/photo-1755933504510-3f6d2a8c4e7b?w=400&q=80" alt="Estetika minimalis" 
-                     style="width: 100%; max-width: 400px; height: auto; border-radius: 4px;"
-                     onerror="this.style.display='none';">
+            <div class="fade" style="display:flex; justify-content:flex-end;">
+                <div style="width:100%; max-width:340px; aspect-ratio:1; background:var(--surface); border-radius:50%;"></div>
             </div>
         </div>
     </section>
 
-    <section id="contact" style="text-align: center;">
-        <div class="container" style="max-width: 640px;">
-            <div class="section-header fade-in">
-                <div class="label">Tetap terhubung</div>
+    <!-- Kontak -->
+    <section id="kontak">
+        <div class="container" style="max-width:600px; text-align:center;">
+            <div class="section-head fade">
+                <div class="tag">Surat kabar</div>
                 <h2>Dapatkan esai mingguan.</h2>
             </div>
-            <p class="fade-in" style="color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.1rem;">
-                Tidak ada spam, hanya tulisan pendek tentang desain minimalis setiap akhir pekan.
+            <p class="fade" style="color:var(--ink-light); margin-bottom:2.4rem;">
+                Tidak ada spam. Hanya sepucuk tulisan pendek tentang desain dan ketenangan, setiap akhir pekan.
             </p>
-            <form class="fade-in" style="display: flex; gap: 0.8rem; max-width: 450px; margin: 0 auto;" onsubmit="event.preventDefault(); alert('Terima kasih (simulasi).');">
-                <input type="email" placeholder="Alamat email kamu" required 
-                    style="flex:1; padding: 1rem 1.5rem; border: 1px solid var(--border); background: var(--white); color: var(--text); font-family: var(--font-sans); font-size: 0.9rem; border-radius: 100px; outline: none;">
-                <button type="submit" class="btn" style="margin:0;">Berlangganan</button>
+            <form class="fade" style="display:flex; gap:0.6rem; max-width:420px; margin:0 auto;" onsubmit="event.preventDefault(); alert('Terima kasih telah bergabung.');">
+                <input type="email" placeholder="Alamat email" required
+                    style="flex:1; padding:0.9rem 1.4rem; border:1px solid var(--line); background:var(--white); color:var(--ink); font-family:var(--font); font-size:0.9rem; border-radius:100px; outline:none;">
+                <button type="submit" class="btn">Langganan</button>
             </form>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <div class="container" style="display: flex; justify-content: space-between; width: 100%;">
-            <span>© 2025 MINIMALISSIMO. Dibuat dengan ruang kosong.</span>
-            <span><a href="#">Kebijakan Privasi</a> · <a href="#">Kontak</a></span>
+        <div class="container" style="display:flex; justify-content:space-between; width:100%;">
+            <span>&copy; 2025 Ruang. Semua hak dilindungi kesederhanaan.</span>
+            <span><a href="#">Privasi</a> &middot; <a href="#">Kontak</a></span>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        const navbar = document.getElementById('navbar');
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
+        (function () {
+            const nav = document.getElementById('nav');
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
 
-        // Dark Mode
-        if (localStorage.getItem('theme') === 'dark') {
-            body.setAttribute('data-theme', 'dark');
-            themeToggle.textContent = '🌙';
-        }
-        themeToggle.addEventListener('click', () => {
-            if (body.hasAttribute('data-theme')) {
-                body.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-                themeToggle.textContent = '☀️';
-            } else {
+            // Dark mode
+            if (localStorage.getItem('theme') === 'dark') {
                 body.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                themeToggle.textContent = '🌙';
+                themeToggle.textContent = '☾';
             }
-        });
-
-        // Navbar Scroll
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 20);
-        });
-
-        // Hamburger
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('open');
-        });
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('open');
+            themeToggle.addEventListener('click', () => {
+                const isDark = body.hasAttribute('data-theme');
+                body.toggleAttribute('data-theme');
+                localStorage.setItem('theme', isDark ? 'light' : 'dark');
+                themeToggle.textContent = isDark ? '☀' : '☾';
             });
-        });
 
-        // Fade Animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
+            // Navbar scroll
+            window.addEventListener('scroll', () => {
+                nav.classList.toggle('scrolled', window.scrollY > 20);
             });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+            // Mobile menu
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                navLinks.classList.toggle('open');
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('open');
+                    navLinks.classList.remove('open');
+                });
+            });
+
+            // Fade-in observer
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+        })();
     </script>
 </body>
 </html>
